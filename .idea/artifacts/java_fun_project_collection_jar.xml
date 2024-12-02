@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="java-fun-project-collection:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/java_fun_project_collection_jar</output-path>
+    <root id="archive" name="java-fun-project-collection.jar">
+      <element id="module-output" name="java-fun-project-collection" />
+    </root>
+  </artifact>
+</component>
