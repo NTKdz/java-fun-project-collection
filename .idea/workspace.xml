@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="java-fun-project-collection:jar" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="12284f2a-35b4-4c87-b070-9b7b628074b5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/demo/.idea/artifacts/demo_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-test/DockerFile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-test/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-test/PerformanceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-test/data.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-test/edge-detection.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-test/opencv_java4100.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-test/test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/temp/Caller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/temp/TestPack.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/temp/demo/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/temp/demo/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/temp/demo/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/temp/demo/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/temp/demo/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/temp/demo/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/temp/demo/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/temp/demo/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/temp/demo/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/temp/demo/demo.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/temp/demo/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/temp/demo/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/temp/demo/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/temp/demo/src/main/java/com/personal/demo/HelloApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/temp/demo/src/main/java/com/personal/demo/HelloController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/temp/demo/src/main/java/module-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/temp/demo/src/main/resources/com/personal/demo/hello-view.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/temp/demo/target/classes/com/personal/demo/hello-view.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-app/src/main/resources/com/personal/testapp/styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yt-downloader/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yt-downloader/YtDownloader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yt-downloader/out/production/yt-downloader/yt-downloader.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yt-downloader/yt-downloader.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/demo/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/java_fun_project_collection_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/java-fun-project-collection.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/java-fun-project-collection.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java-fun-project-collection/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java-fun-project-collection/brad_pit.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java-fun-project-collection/brad_pit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java-fun-project-collection/test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/temp/META-INF/MANIFEST.MF" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2pF0qaENHh2sq2mhWkwPCMfwzDE" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Application.AutoClicker.executor": "Run",
+    "Application.Fetch.executor": "Run",
+    "Application.HelloApplication.executor": "Run",
+    "Application.Main.executor": "Run",
+    "Application.MazeSolver.executor": "Run",
+    "Application.TestPack.executor": "Run",
+    "Application.YtDownloader.executor": "Run",
+    "Node.js.test.js.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/study/Coding-Project/java-project/java-fun-project-collection/docker-test",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\study\Coding-Project\java-project\java-fun-project-collection\out\artifacts\java_fun_project_collection_jar" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\study\Coding-Project\java-project\java-fun-project-collection\temp" />
+      <recent name="C:\study\Coding-Project\java-project\java-fun-project-collection\resources" />
+      <recent name="C:\study\Coding-Project\java-project\java-fun-project-collection\out\artifacts\java_fun_project_collection_jar" />
+      <recent name="C:\study\Coding-Project\java-project\java-fun-project-collection\TextToHtml\src" />
+      <recent name="C:\study\Coding-Project\java-project\java-fun-project-collection\CountVowels\src" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="MazeSolver" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MazeSolver" />
+      <module name="java-fun-project-collection" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.MazeSolver" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.145" />
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-IU-243.22562.145" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="12284f2a-35b4-4c87-b070-9b7b628074b5" name="Changes" comment="" />
+      <created>1732346708112</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1732346708112</updated>
+      <workItem from="1732346709315" duration="197000" />
+      <workItem from="1732346915203" duration="3557000" />
+      <workItem from="1732350723453" duration="2568000" />
+      <workItem from="1732354376792" duration="1711000" />
+      <workItem from="1732376970638" duration="4910000" />
+      <workItem from="1732463261470" duration="3120000" />
+      <workItem from="1732477606532" duration="2968000" />
+      <workItem from="1732513283327" duration="5136000" />
+      <workItem from="1732529715663" duration="1599000" />
+      <workItem from="1733334305682" duration="2160000" />
+      <workItem from="1733389943936" duration="1203000" />
+      <workItem from="1733391500172" duration="305000" />
+      <workItem from="1733392108051" duration="2132000" />
+      <workItem from="1733395814403" duration="749000" />
+      <workItem from="1733397709953" duration="2144000" />
+      <workItem from="1733402388554" duration="829000" />
+      <workItem from="1734015249258" duration="17000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
