@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="56ee3a8f-a8ce-4c6e-8fa3-ad6c95bc9650" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2qkoYCB2cmp7jMjej0KCFibe9mS" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.ASCIIToImage.executor": "Run",
+    "Application.AspectRatioChecker.executor": "Run",
+    "Application.AutomatedTask.executor": "Run",
+    "Application.BasicFTPServer.executor": "Run",
+    "Application.DataCrawler.executor": "Run",
+    "Application.Https.executor": "Run",
+    "Application.Maze.executor": "Run",
+    "Application.PixelMatrix.executor": "Run",
+    "Application.SortingComparison.executor": "Run",
+    "Application.Test.executor": "Run",
+    "Application.TicTacToeAgent.executor": "Run",
+    "Application.TicTacToeQLearning.executor": "Run",
+    "Application.VideoProcessor.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "true",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/study/Coding-Project/java-project/java-fun-project-collection/test",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\study\Coding-Project\for-fun\test\video" />
+      <recent name="C:\study\Coding-Project\for-fun\test\image" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.218" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="56ee3a8f-a8ce-4c6e-8fa3-ad6c95bc9650" name="Changes" comment="" />
+      <created>1735215978899</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1735215978899</updated>
+      <workItem from="1735215980008" duration="476000" />
+      <workItem from="1735216470511" duration="247000" />
+      <workItem from="1735216726759" duration="182000" />
+      <workItem from="1735216920715" duration="198000" />
+      <workItem from="1735217128189" duration="3026000" />
+      <workItem from="1735223353270" duration="3596000" />
+      <workItem from="1735530994729" duration="2076000" />
+      <workItem from="1735538490280" duration="980000" />
+      <workItem from="1735569651180" duration="4405000" />
+      <workItem from="1735601956336" duration="243000" />
+      <workItem from="1735626878301" duration="1099000" />
+      <workItem from="1735628605617" duration="4448000" />
+      <workItem from="1735633440753" duration="148000" />
+      <workItem from="1735633781334" duration="107000" />
+      <workItem from="1735633903214" duration="145000" />
+      <workItem from="1735634304918" duration="1259000" />
+      <workItem from="1735636156012" duration="1996000" />
+      <workItem from="1735713046772" duration="1977000" />
+      <workItem from="1735720879843" duration="8409000" />
+      <workItem from="1735813718899" duration="6855000" />
+      <workItem from="1735873838312" duration="5388000" />
+      <workItem from="1735882850941" duration="1487000" />
+      <workItem from="1735885797972" duration="10000" />
+      <workItem from="1735960028955" duration="179000" />
+      <workItem from="1735960215395" duration="1014000" />
+      <workItem from="1736004343116" duration="3232000" />
+      <workItem from="1736096501132" duration="9072000" />
+      <workItem from="1736140468760" duration="13011000" />
+      <workItem from="1736162675674" duration="1257000" />
+      <workItem from="1736173544571" duration="2430000" />
+      <workItem from="1736246932397" duration="385000" />
+      <workItem from="1736266184222" duration="991000" />
+      <workItem from="1736267485816" duration="723000" />
+    </task>
+    <servers />
+  </component>
+</project>
