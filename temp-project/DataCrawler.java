@@ -26,9 +26,9 @@ public class DataCrawler {
 
     public static void main(String[] args) {
         int start = 1;
-        int end = 896;
-        String url = "https://metruyencv.com/truyen/bat-dau-uy-hiep-nu-chinh-cai-nay-phan-phai-ta-duong-dinh/chuong-";
-        String folderPath = "novel/uy-hiep";
+        int end = 534;
+        String url = "https://metruyencv.com/truyen/bi-truc-xuat-tong-mon-phia-sau-su-ton-su-ty-hoi-han-ca-doi/chuong-";
+        String folderPath = "novel/truc-xuat-tong-mon/";
 //        deleteDirectoryRecursively(Path.of(folderPath));
 //        System.out.println("Directory and its contents deleted successfully.");
 
