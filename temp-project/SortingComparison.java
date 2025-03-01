@@ -1,10 +1,12 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
+import java.util.stream.Stream;
 
 public class SortingComparison {
     public static void main(String[] args) {
         int arraySize = 1000000; // Size of the array to test
-        int[] unsortedArray = generateRandomArray(arraySize, 0, 100);
+        int[] unsortedArray = generateRandomArray(arraySize, 0, 999999);
 
         System.out.println("Testing sorting algorithms on an array of size: " + arraySize);
 
@@ -18,10 +20,10 @@ public class SortingComparison {
         // Measure performance
         measurePerformance("Merge Sort", () -> mergeSort(arrayForMergeSort, 0, arrayForMergeSort.length - 1));
         measurePerformance("Quick Sort", () -> quickSort(arrayForQuickSort, 0, arrayForQuickSort.length - 1));
-        measurePerformance("Heap Sort", () -> heapSort(arrayForHeapSort));
-        measurePerformance("Radix Sort", () -> radixSort(arrayForRadixSort));
-        measurePerformance("Counting Sort", () -> countingSort(arrayForCountingSort));
-        measurePerformance("Tim Sort (Arrays.sort)", () -> Arrays.sort(arrayForTimSort));
+//        measurePerformance("Heap Sort", () -> heapSort(arrayForHeapSort));
+//        measurePerformance("Radix Sort", () -> radixSort(arrayForRadixSort));
+//        measurePerformance("Counting Sort", () -> countingSort(arrayForCountingSort));
+//        measurePerformance("Tim Sort (Arrays.sort)", () -> Arrays.sort(arrayForTimSort));
     }
 
     // Generates an array of random integers
@@ -165,6 +167,7 @@ public class SortingComparison {
         for (int i = arr.length - 1; i >= 0; i--) {
             output[--count[arr[i] - min]] = arr[i];
         }
+        
 
         System.arraycopy(output, 0, arr, 0, arr.length);
     }

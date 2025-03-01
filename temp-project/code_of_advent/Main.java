@@ -7,9 +7,7 @@ import java.util.Stack;
 public class Main {
 
     public static void solution3() {
-        int maxDigit = 0;
         File file = new File("code_of_advent/input3.txt");
-
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String input;
             int total = 0;
@@ -64,8 +62,16 @@ public class Main {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         System.out.println("Hello World");
         solution3();
+        FileInputStream fstream = new FileInputStream("C:\\testnew\\out.text");
+        DataInputStream in = new DataInputStream(fstream);
+        BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
+        BufferedInputStream bin = new BufferedInputStream(fstream);
+        String strLine;
+        while ((strLine = br.readLine()) != null){
+            System.out.println (strLine);
+        }
     }
 }

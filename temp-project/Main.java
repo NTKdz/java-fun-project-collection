@@ -1,8 +1,13 @@
+import pv.PV;
+
 import java.io.*;
 import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
+        PV pv = new PV();
+        pv.test();
+
         List<List<Integer>> reports = new ArrayList<>();
 
         try (BufferedReader br = new BufferedReader(new FileReader("data.txt"))) {

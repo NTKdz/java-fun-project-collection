@@ -10,52 +10,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="12284f2a-35b4-4c87-b070-9b7b628074b5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/demo/.idea/artifacts/demo_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-test/DockerFile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-test/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-test/PerformanceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-test/data.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-test/edge-detection.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-test/opencv_java4100.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-test/test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/temp/Caller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/temp/TestPack.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/temp/demo/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/temp/demo/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/temp/demo/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/temp/demo/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/temp/demo/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/temp/demo/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/temp/demo/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/temp/demo/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/temp/demo/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/temp/demo/demo.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/temp/demo/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/temp/demo/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/temp/demo/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/temp/demo/src/main/java/com/personal/demo/HelloApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/temp/demo/src/main/java/com/personal/demo/HelloController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/temp/demo/src/main/java/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/temp/demo/src/main/resources/com/personal/demo/hello-view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/temp/demo/target/classes/com/personal/demo/hello-view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-app/src/main/resources/com/personal/testapp/styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yt-downloader/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yt-downloader/YtDownloader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yt-downloader/out/production/yt-downloader/yt-downloader.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yt-downloader/yt-downloader.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/demo/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/java_fun_project_collection_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/java-fun-project-collection.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/java-fun-project-collection.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java-fun-project-collection/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java-fun-project-collection/brad_pit.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java-fun-project-collection/brad_pit.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java-fun-project-collection/test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/temp/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorting-visualizer/SortingVisualizer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/temp-project/pv/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/temp-project/pv/PV.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/temp-project/pv/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp-project/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/temp-project/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp-project/SortingComparison.java" beforeDir="false" afterPath="$PROJECT_DIR$/temp-project/SortingComparison.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp-project/code_of_advent/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/temp-project/code_of_advent/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +59,7 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/study/Coding-Project/java-project/java-fun-project-collection/docker-test",
+    "last_opened_file_path": "C:/study/Coding-Project/java-project/java-fun-project-collection/sorting-visualizer",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -112,6 +74,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\study\Coding-Project\java-project\java-fun-project-collection\sorting-visualizer" />
       <recent name="C:\study\Coding-Project\java-project\java-fun-project-collection\out\artifacts\java_fun_project_collection_jar" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -142,8 +105,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.145" />
-        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-IU-243.22562.145" />
+        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.25659.39" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.25659.39" />
       </set>
     </attachedChunks>
   </component>
@@ -172,6 +135,7 @@
       <workItem from="1733397709953" duration="2144000" />
       <workItem from="1733402388554" duration="829000" />
       <workItem from="1734015249258" duration="17000" />
+      <workItem from="1740871479463" duration="68000" />
     </task>
     <servers />
   </component>
