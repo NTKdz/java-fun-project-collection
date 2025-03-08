@@ -21,8 +21,9 @@ public class SortingVisualizer {
     static JLabel statsLabel = new JLabel("Performance: ");
     static int delay_divisor = 60;
     static boolean raw = false;
-    static int[] index = new int[]{-1, -1};
+    static int[] index = new int[] { -1, -1 };
     static SourceDataLine currentLine;
+    private static SwingWorker<Void, Void> worker;
 
     public static void main(String[] args) {
         array = generateArray(ARRAY_SIZE);
@@ -31,10 +32,6 @@ public class SortingVisualizer {
         JPanel panel = createVisualizationPanel();
         JComboBox<String> algorithmSelector = createAlgorithmSelector();
         JPanel controlPanel = createControlPanel(algorithmSelector, panel);
-//        JScrollPane scrollPane = new JScrollPane(panel);
-//        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-//
-//        frame.add(scrollPane, BorderLayout.CENTER);
 
         frame.setLayout(new BorderLayout());
         frame.add(panel, BorderLayout.CENTER);
@@ -78,7 +75,8 @@ public class SortingVisualizer {
         for (int i = 0; i < ARRAY_SIZE - 1; i++) {
             int minIdx = i;
             for (int j = i + 1; j < ARRAY_SIZE; j++) {
-                if (array[j] < array[minIdx]) minIdx = j;
+                if (array[j] < array[minIdx])
+                    minIdx = j;
                 operations++;
             }
             swap(i, minIdx);
@@ -124,7 +122,6 @@ public class SortingVisualizer {
         visualize(panel, delay_divisor);
         return i + 1;
     }
-
 
     public static void mergeSort(JPanel panel) throws InterruptedException {
         Thread.sleep(500);
@@ -184,7 +181,6 @@ public class SortingVisualizer {
         }
     }
 
-
     public static void cocktailSort(JPanel panel) throws InterruptedException {
         Thread.sleep(500);
         long startTime = System.nanoTime();
@@ -202,7 +198,8 @@ public class SortingVisualizer {
                 }
                 operations++;
             }
-            if (!swapped) break;
+            if (!swapped)
+                break;
             end--;
 
             swapped = false;
@@ -219,7 +216,6 @@ public class SortingVisualizer {
         updateStats(startTime, "O(n²) Time, O(1) Space");
     }
 
-
     public static void countingSort(JPanel panel) throws InterruptedException {
         Thread.sleep(500);
         long startTime = System.nanoTime();
@@ -228,7 +224,8 @@ public class SortingVisualizer {
         int[] count = new int[ARRAY_MAX + 1];
         int[] output = new int[ARRAY_SIZE];
 
-        for (int num : array) count[num]++;
+        for (int num : array)
+            count[num]++;
         for (int i = 1; i <= ARRAY_MAX; i++) {
             count[i] += count[i - 1];
             playSound(200 + (array[i] * 5), 50);
@@ -242,7 +239,6 @@ public class SortingVisualizer {
         System.arraycopy(output, 0, array, 0, ARRAY_SIZE);
         updateStats(startTime, "O(n+k) Time, O(k) Space");
     }
-
 
     public static void radixSort(JPanel panel) throws InterruptedException {
         Thread.sleep(500);
@@ -262,8 +258,10 @@ public class SortingVisualizer {
         int[] count = new int[10];
 
         Arrays.fill(count, 0);
-        for (int num : array) count[(num / exp) % 10]++;
-        for (int i = 1; i < 10; i++) count[i] += count[i - 1];
+        for (int num : array)
+            count[(num / exp) % 10]++;
+        for (int i = 1; i < 10; i++)
+            count[i] += count[i - 1];
         for (int i = ARRAY_SIZE - 1; i >= 0; i--) {
             output[count[(array[i] / exp) % 10] - 1] = array[i];
             count[(array[i] / exp) % 10]--;
@@ -273,7 +271,6 @@ public class SortingVisualizer {
         System.arraycopy(output, 0, array, 0, ARRAY_SIZE);
     }
 
-
     public static void bucketSort(JPanel panel) throws InterruptedException {
         Thread.sleep(500);
         long startTime = System.nanoTime();
@@ -281,7 +278,8 @@ public class SortingVisualizer {
 
         int bucketCount = 10;
         ArrayList<Integer>[] buckets = new ArrayList[bucketCount];
-        for (int i = 0; i < bucketCount; i++) buckets[i] = new ArrayList<>();
+        for (int i = 0; i < bucketCount; i++)
+            buckets[i] = new ArrayList<>();
 
         for (int num : array) {
             int bucketIdx = num * bucketCount / (ARRAY_MAX + 1);
@@ -300,7 +298,6 @@ public class SortingVisualizer {
         }
         updateStats(startTime, "O(n+k) avg, O(n) Space");
     }
-
 
     public static void gnomeSort(JPanel panel) throws InterruptedException {
         Thread.sleep(500);
@@ -321,10 +318,10 @@ public class SortingVisualizer {
         updateStats(startTime, "O(n²) Time, O(1) Space");
     }
 
-
     private static void visualize(JPanel panel, int delayDivisor) throws InterruptedException {
         panel.repaint();
-        if (!raw) Thread.sleep(1000 / delay_divisor);
+        if (!raw)
+            Thread.sleep(1000 / delay_divisor);
     }
 
     private static void updateStats(long startTime, String comp) {
@@ -334,10 +331,11 @@ public class SortingVisualizer {
             if (raw)
                 statsLabel.setText(String.format("Time: %.2f ms | Ops: %d | %s",
                         timeTaken / 1e6, operations, complexity));
-            else statsLabel.setText(String.format("Ops: %d | %s",
-                    operations, complexity));
+            else
+                statsLabel.setText(String.format("Ops: %d | %s",
+                        operations, complexity));
         });
-//        System.out.println(timeTaken / 1e6 + " " + comp);
+
     }
 
     private static JPanel createVisualizationPanel() {
@@ -346,33 +344,38 @@ public class SortingVisualizer {
             public Dimension getPreferredSize() {
                 return new Dimension(
                         (int) Math.max(Math.max(1, (double) getWidth() / array.length), PANEL_WIDTH),
-                        PANEL_HEIGHT
-                );
+                        PANEL_HEIGHT);
             }
 
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
+                Graphics2D g2d = (Graphics2D) g;
                 int panelWidth = getWidth();
                 int panelHeight = getHeight();
 
-                double blockWidth = Math.max(1, (double) panelWidth / array.length);
+                double exactBlockWidth = (double) panelWidth / array.length;
+
+                double scaleFactorX = ((exactBlockWidth * array.length) > panelWidth)
+                        ? (double) panelWidth / (exactBlockWidth * array.length)
+                        : 1.0;
+                g2d.scale(scaleFactorX, 1);
+
                 double blockHeight = (double) panelHeight / (ARRAY_MAX - ARRAY_MIN);
 
                 for (int i = 0; i < array.length; i++) {
                     int height = (int) (blockHeight * (array[i] - ARRAY_MIN + 1));
-                    int xPosition = (int) (i * blockWidth);
 
-                    if (xPosition >= panelWidth) continue;
+                    double xPosition = i * exactBlockWidth;
 
-                    g.setColor((i == index[0] || i == index[1]) ? Color.GREEN : new Color(0, 150, 0));
-                    g.fillRect(xPosition, panelHeight - height, (int) blockWidth, height);
+                    g2d.setColor((i == index[0] || i == index[1]) ? Color.GREEN : new Color(0, 150, 0));
+
+                    g2d.fillRect((int) xPosition, panelHeight - height,
+                            (int) Math.ceil(exactBlockWidth), height);
                 }
             }
-
         };
         panel.setBackground(new Color(18, 18, 18));
-
 
         panel.addComponentListener(new java.awt.event.ComponentAdapter() {
             @Override
@@ -383,7 +386,6 @@ public class SortingVisualizer {
 
         return panel;
     }
-
 
     private static JComboBox<String> createAlgorithmSelector() {
         String[] algorithms = {
@@ -399,19 +401,16 @@ public class SortingVisualizer {
         JPanel controlPanel = new JPanel(new BorderLayout());
         JPanel buttonPanel = new JPanel(new FlowLayout());
 
-        // Existing buttons
         JButton startButton = new JButton("Start");
         JButton resetButton = new JButton("New Array");
         JButton rawButton = new JButton("Raw");
 
-        // Sliders
         JPanel sliderPanel = new JPanel();
         sliderPanel.setLayout(new BoxLayout(sliderPanel, BoxLayout.Y_AXIS));
 
-        // Array Size Slider
         JPanel sizePanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         JLabel sizeLabel = new JLabel("Size: " + ARRAY_SIZE);
-        JSlider sizeSlider = new JSlider(10, 2000, ARRAY_SIZE);
+        JSlider sizeSlider = new JSlider(10, 5000, ARRAY_SIZE);
         sizeSlider.setPreferredSize(new Dimension(150, 20));
         sizeSlider.addChangeListener(e -> {
             ARRAY_SIZE = sizeSlider.getValue();
@@ -421,7 +420,6 @@ public class SortingVisualizer {
         sizePanel.add(sizeSlider);
         sizePanel.add(sizeLabel);
 
-        // Max Value Slider
         JPanel maxPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         JLabel maxLabel = new JLabel("Max: " + ARRAY_MAX);
         JSlider maxSlider = new JSlider(10, 1000, ARRAY_MAX);
@@ -437,26 +435,27 @@ public class SortingVisualizer {
         sliderPanel.add(sizePanel);
         sliderPanel.add(maxPanel);
 
-        // Add components to control panel
         controlPanel.add(buttonPanel, BorderLayout.WEST);
         controlPanel.add(sliderPanel, BorderLayout.CENTER);
 
-        // Existing button listeners
         startButton.addActionListener(e -> {
             raw = false;
             sortType = selector.getSelectedIndex();
-            new SwingWorker<Void, Void>() {
+            worker = new SwingWorker<Void, Void>() {
                 protected Void doInBackground() throws Exception {
                     sort(panel, sortType);
                     return null;
                 }
-            }.execute();
+            };
+            worker.execute();
         });
 
         resetButton.addActionListener(e -> {
+            if (worker != null)
+                worker.cancel(true);
             index[0] = -1;
             index[1] = -1;
-            array = generateArray(ARRAY_SIZE); // Generate with current size
+            array = generateArray(ARRAY_SIZE);
             statsLabel.setText("Performance: ");
             panel.revalidate();
             panel.repaint();
@@ -465,12 +464,13 @@ public class SortingVisualizer {
         rawButton.addActionListener(e -> {
             raw = true;
             sortType = selector.getSelectedIndex();
-            new SwingWorker<Void, Void>() {
+            worker = new SwingWorker<Void, Void>() {
                 protected Void doInBackground() throws Exception {
                     sort(panel, sortType);
                     return null;
                 }
-            }.execute();
+            };
+            worker.execute();
         });
 
         buttonPanel.add(selector);
@@ -481,16 +481,16 @@ public class SortingVisualizer {
         return controlPanel;
     }
 
-
     private static void swap(int i, int j) {
-//        System.out.println(i);
+
         index[0] = i;
         index[1] = j;
         int temp = array[i];
         array[i] = array[j];
         array[j] = temp;
         operations++;
-        if (!raw) playSound(200 + (array[i] * 5), 50);
+        if (!raw)
+            playSound(200 + (array[i] * 5), 50);
     }
 
     public static int[] generateArray(int size) {
@@ -508,8 +508,7 @@ public class SortingVisualizer {
                 case 5 -> heapSort(panel);
                 case 6 -> shellSort(panel);
                 case 7 -> cocktailSort(panel);
-//                case 8 -> countingSort(panel);
-//                case 9 -> radixSort(panel);
+
                 case 10 -> bucketSort(panel);
                 case 11 -> gnomeSort(panel);
                 case 12 -> combSort(panel);
@@ -554,7 +553,6 @@ public class SortingVisualizer {
         updateStats(startTime, "O(n²) worst, O(n log n) best");
     }
 
-    // IntroSort (Hybrid of QuickSort, HeapSort, and InsertionSort)
     public static void introSort(JPanel panel) throws InterruptedException {
         Thread.sleep(500);
         long startTime = System.nanoTime();
@@ -582,12 +580,10 @@ public class SortingVisualizer {
     private static void heapSortHelper(JPanel panel, int low, int high) throws InterruptedException {
         int n = high - low + 1;
 
-        // Build heap
         for (int i = low + (n / 2 - 1); i >= low; i--) {
             heapifySubarray(panel, n, i, low);
         }
 
-        // Extract elements
         for (int i = high; i > low; i--) {
             swap(low, i);
             visualize(panel, delay_divisor);
@@ -631,7 +627,6 @@ public class SortingVisualizer {
         }
     }
 
-    // Tree Sort (using BST)
     public static void treeSort(JPanel panel) throws InterruptedException {
         Thread.sleep(500);
         long startTime = System.nanoTime();
@@ -642,7 +637,7 @@ public class SortingVisualizer {
             root = insertBST(root, array[i]);
         }
 
-        final int[] index = {0};
+        final int[] index = { 0 };
         inOrderTraversal(root, index);
         updateStats(startTime, "O(n log n)");
     }
@@ -657,9 +652,12 @@ public class SortingVisualizer {
     }
 
     private static TreeNode insertBST(TreeNode root, int val) {
-        if (root == null) return new TreeNode(val);
-        if (val < root.value) root.left = insertBST(root.left, val);
-        else root.right = insertBST(root.right, val);
+        if (root == null)
+            return new TreeNode(val);
+        if (val < root.value)
+            root.left = insertBST(root.left, val);
+        else
+            root.right = insertBST(root.right, val);
         return root;
     }
 
@@ -710,11 +708,10 @@ public class SortingVisualizer {
         updateStats(timeTaken, complexity);
     }
 
-
     public static void heapSort(JPanel panel) throws InterruptedException {
         long startTime = System.nanoTime();
         Thread.sleep(500);
-        heapSortHelper(panel, 0, ARRAY_SIZE - 1); // Changed to use helper
+        heapSortHelper(panel, 0, ARRAY_SIZE - 1);
         timeTaken = System.nanoTime() - startTime;
         complexity = "O(n log n) Time, O(1) Space";
         updateStats(timeTaken, complexity);
@@ -725,16 +722,13 @@ public class SortingVisualizer {
         int left = 2 * i + 1;
         int right = 2 * i + 2;
 
-
         if (left < n && array[left] > array[largest]) {
             largest = left;
         }
 
-
         if (right < n && array[right] > array[largest]) {
             largest = right;
         }
-
 
         if (largest != i) {
             swap(i, largest);
@@ -745,11 +739,9 @@ public class SortingVisualizer {
         }
     }
 
-
     public static void shellSort(JPanel panel) throws InterruptedException {
         long startTime = System.nanoTime();
         Thread.sleep(500);
-
 
         for (int gap = ARRAY_SIZE / 2; gap > 0; gap /= 2) {
 
