@@ -1,3 +1,4 @@
+import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -26,11 +27,25 @@ public class DataCrawler {
 
     public static void main(String[] args) {
         int start = 1;
-        int end = 193;
-        String url = "https://metruyencv.info/truyen/cai-gi-tieu-tu-nay-boi-canh-cung-nhu-vay/chuong-";
-        String folderPath = "novel/boi-canh/";
+        int end = 2;
+        String url = "https://metruyencv.biz/truyen/bat-dau-cam-xuong-nhan-vat-chinh-muoi-muoi-ban-thuong-chi-ton-cot/chuong-";
+        String folderPath = "novel/nv-chinh-muoi-muoi/";
 //        deleteDirectoryRecursively(Path.of(folderPath));
 //        System.out.println("Directory and its contents deleted successfully.");
+
+        // Login
+        String loginUrl = "https://backend.metruyencv.com/api/auth/login";
+        String email = "-"; // Replace with your email
+        String password = "-"; // Replace with your password
+        String token = null;
+        try {
+            token = loginAndGetToken(loginUrl, email, password);
+            System.out.println("Extracted token: " + token);
+        } catch (IOException e) {
+            System.err.println("Login failed: " + e.getMessage());
+            return;
+        }
+
 
         long startTime = System.nanoTime();
 
@@ -40,7 +55,8 @@ public class DataCrawler {
 
             for (int i = start; i <= end; i++) {
                 final int chapter = i;
-                futures.add(executor.submit(() -> downloadAndSaveChapter(chapter, url, folderPath)));
+                String finalToken = token;
+                futures.add(executor.submit(() -> downloadAndSaveChapter(chapter, url, folderPath, finalToken)));
                 System.out.println("Submitted task for chapter " + chapter);
             }
 
@@ -84,21 +100,24 @@ public class DataCrawler {
         System.out.printf("Total execution time: %02d:%02d.%03d%n", minutes, seconds, milliseconds); // Min:Sec.Ms format
     }
 
-    private static void downloadAndSaveChapter(int chapter, String url, String folderPath) {
+    private static void downloadAndSaveChapter(int chapter, String url, String folderPath, String token) {
         File file = new File(folderPath + "/chapter-" + chapter + ".txt");
-        if (file.exists()) {
-            System.out.println("File already exists: chapter-" + chapter + ". Skipping...");
-            return;
-        }
+//        if (file.exists()) {
+//            System.out.println("File already exists: chapter-" + chapter + ". Skipping...");
+//            return;
+//        }
 
         int attempts = 0;
         while (attempts < 10) {
             try {
                 Document doc = Jsoup.connect(url + chapter)
-                        .timeout(5000)
+                        .timeout(10000)
+                        .header("Authorization", "Bearer " + token) // Use token in Authorization header
+                        .userAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36")
                         .get();
-                Elements chapterContent = doc.select("[data-x-bind=ChapterContent]");
-
+                System.out.println(doc.html());
+                Elements chapterContent = doc.select("[id=chapter-content]");
+                System.out.println(chapterContent.text());
                 chapterContent.select("div[id=middle-content-three]").remove();
                 chapterContent.select("div[id=middle-content-two]").remove();
                 chapterContent.select("div[id=middle-content-one]").remove();
@@ -168,5 +187,38 @@ public class DataCrawler {
             System.out.println("An error occurred while merging files.");
             System.out.println(e.getMessage());
         }
+    }
+
+    public static String loginAndGetToken(String loginUrl, String email, String password) throws IOException {
+        // Prepare the login payload
+        Map<String, String> data = new HashMap<>();
+        data.put("email", email);
+        data.put("password", password);
+        data.put("remember", "1");
+        data.put("device_name", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36");
+
+        // Perform the login request
+        Connection.Response loginResponse = Jsoup.connect(loginUrl)
+                .header("Content-Type", "application/json")
+                .requestBody("{" +
+                        "\"email\": \"" + email + "\"," +
+                        "\"password\": \"" + password + "\"," +
+                        "\"remember\": 1," +
+                        "\"device_name\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36\"" +
+                        "}")
+                .method(Connection.Method.POST)
+                .ignoreContentType(true)
+                .execute();
+
+        // Parse the response to get the token
+        String responseBody = loginResponse.body();
+        System.out.println("Login response status: " + loginResponse.statusCode());
+        System.out.println("Login response body: " + responseBody);
+
+        // Extract token (assuming JSON format)
+        int tokenStart = responseBody.indexOf("\"token\":\"") + "\"token\":\"".length();
+        int tokenEnd = responseBody.indexOf("\"", tokenStart);
+        String token = responseBody.substring(tokenStart, tokenEnd);
+        return token;
     }
 }

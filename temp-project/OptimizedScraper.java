@@ -37,8 +37,8 @@ public class OptimizedScraper {
 
         // Login
         String loginUrl = "https://backend.metruyencv.com/api/auth/login";
-        String email = "nutakuntk@gmail.com"; // Replace with your email
-        String password = "khoi2003"; // Replace with your password
+        String email = "-"; // Replace with your email
+        String password = "-"; // Replace with your password
         try {
             token = loginAndGetToken(loginUrl, email, password);
             System.out.println("Extracted token: " + token);

@@ -13,6 +13,6 @@ public class Https {
 
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         System.out.println(response);
-        client.close();
+//        client.close();
     }
 }

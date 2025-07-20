@@ -10,14 +10,121 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="12284f2a-35b4-4c87-b070-9b7b628074b5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/sorting-visualizer/SortingVisualizer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/temp-project/pv/META-INF/MANIFEST.MF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/temp-project/pv/PV.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/temp-project/pv/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp-project/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/temp-project/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp-project/SortingComparison.java" beforeDir="false" afterPath="$PROJECT_DIR$/temp-project/SortingComparison.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp-project/code_of_advent/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/temp-project/code_of_advent/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computer-info/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computer-info/.idea/computer-info.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computer-info/.idea/libraries/github_oshi_core.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computer-info/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computer-info/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computer-info/Board.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computer-info/BoardPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computer-info/Cell.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computer-info/FullSystemInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computer-info/Minesweeper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computer-info/Point.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computer-info/QLearningAgent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computer-info/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/deep-learning/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/deep-learning/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/deep-learning/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/deep-learning/.idea/material_theme_project_new.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/deep-learning/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/deep-learning/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/deep-learning/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/deep-learning/src/main/java/com/snakeai/game/Direction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/deep-learning/src/main/java/com/snakeai/game/GamePanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/deep-learning/src/main/java/com/snakeai/game/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/deep-learning/src/main/java/com/snakeai/game/Point.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/deep-learning/src/main/java/com/snakeai/game/SnakeGame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/deep-learning/src/main/java/com/snakeai/game/aicontroller/Agent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/deep-learning/src/main/java/com/snakeai/game/aicontroller/DeepQNetwork.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/deep-learning/src/main/java/com/snakeai/game/aicontroller/ReplayMemory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/deep-learning/src/main/java/com/snakeai/game/aicontroller/TrainingController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/deep-learning/src/test/java/com/snakeai/AppTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord-bot/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord-bot/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord-bot/AudioPlayerSendHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord-bot/GuildMusicManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord-bot/MusicBot.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord-bot/TrackScheduler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord-bot/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord-bot/target/classes/.idea/discord-bot.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/http-server/.idea/artifacts/http_server_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/http-server/.idea/http-server.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/http-server/.idea/material_theme_project_new.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/http-server/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/http-server/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/http-server/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/http-server/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/http-server/SimpleHttpServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/http-server/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/http-server/out/production/http-server/.idea/http-server.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/http-server/public/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/temp-project/DataCrawlerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/temp-project/code_of_advent/Day4.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/temp-project/code_of_advent/input4.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/temp-project/temp-project.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/.idea/artifacts/test_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/.idea/material_theme_project_new.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/.idea/test.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/JsoupScraper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/LoginScript.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/Scraper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/ScreenCaptureTranslator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/SmartFileFinder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/target/classes/.idea/test.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/target/classes/target/classes/.idea/test.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/test.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/.idea/material_theme_project_new.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/it/settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/it/simple-it/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/it/simple-it/verify.groovy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/main/java/com/snakeai/MyMojo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/java-fun-project-collection.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/java-fun-project-collection.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/discord-bot/.idea/discord-bot.iml" beforeDir="false" afterPath="$PROJECT_DIR$/discord-bot/.idea/discord-bot.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/discord-bot/.idea/libraries/ch_qos_logback_classic.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/discord-bot/.idea/libraries/net_dv8tion_JDA.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/discord-bot/.idea/material_theme_project_new.xml" beforeDir="false" afterPath="$PROJECT_DIR$/discord-bot/.idea/material_theme_project_new.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/discord-bot/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/discord-bot/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/discord-bot/MyBot.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/discord-bot/out/production/discord-bot/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/discord-bot/out/production/discord-bot/.idea/discord-bot.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/discord-bot/out/production/discord-bot/.idea/libraries/ch_qos_logback_classic.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/discord-bot/out/production/discord-bot/.idea/libraries/net_dv8tion_JDA.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/discord-bot/out/production/discord-bot/.idea/material_theme_project_new.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/discord-bot/out/production/discord-bot/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/discord-bot/out/production/discord-bot/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/discord-bot/out/production/discord-bot/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/discord-bot/out/production/discord-bot/logback.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp-project/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/http-server/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp-project/.idea/artifacts/test_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp-project/.idea/libraries/bytedeco_javacv.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp-project/.idea/libraries/jsoup.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp-project/.idea/libraries/net_java_dev_jna.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp-project/.idea/libraries/net_java_dev_jna_platform.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp-project/.idea/libraries/squareup_okhttp3_okhttp.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp-project/.idea/material_theme_project_new.xml" beforeDir="false" afterPath="$PROJECT_DIR$/computer-info/.idea/material_theme_project_new.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp-project/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/http-server/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp-project/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/test/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp-project/.idea/test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/computer-info/out/production/computer-info/.idea/computer-info.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp-project/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/computer-info/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp-project/DataCrawler.java" beforeDir="false" afterPath="$PROJECT_DIR$/temp-project/DataCrawler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp-project/out/production/test/.idea/test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/temp-project/out/production/test/.idea/test.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp-project/pv/PV.java" beforeDir="false" afterPath="$PROJECT_DIR$/temp-project/pv/PV.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp-project/pv/test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/temp-project/pv/test.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/test/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,35 +150,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Application.AutoClicker.executor": "Run",
-    "Application.Fetch.executor": "Run",
-    "Application.HelloApplication.executor": "Run",
-    "Application.Main.executor": "Run",
-    "Application.MazeSolver.executor": "Run",
-    "Application.TestPack.executor": "Run",
-    "Application.YtDownloader.executor": "Run",
-    "Node.js.test.js.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/study/Coding-Project/java-project/java-fun-project-collection/sorting-visualizer",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Application.AutoClicker.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Fetch.executor&quot;: &quot;Run&quot;,
+    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MazeSolver.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TestPack.executor&quot;: &quot;Run&quot;,
+    &quot;Application.YtDownloader.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.test.js.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/study/Coding-Project/java-project/java-fun-project-collection&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\study\Coding-Project\java-project\java-fun-project-collection\sorting-visualizer" />
@@ -101,14 +208,6 @@
         <item itemvalue="Application.MazeSolver" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.25659.39" />
-        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.25659.39" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
