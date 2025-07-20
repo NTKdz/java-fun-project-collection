@@ -1,53 +1,40 @@
 package desktop.app.jnatest;
 
-import java.io.IOException;
+import java.net.http.*;
 import java.net.URI;
 import java.net.URLEncoder;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 public class TranslateHelper {
+    public static String translateText(String text, String targetLang) throws Exception {
+        System.out.println("Translating text: " + text + " to language: " + targetLang);
 
-    public static String translateText(String text, String targetLang) throws IOException, InterruptedException {
-        String encodedText = URLEncoder.encode(text, StandardCharsets.UTF_8);
+        // Normalize text: replace newlines with spaces to avoid %0A
+        String normalizedText = text.replaceAll("\\r?\\n", " ").trim();
+        System.out.println("Normalized text: " + normalizedText);
+
+        // Encode text, replacing '+' with '%20' for Lingva API compatibility
+        String encodedText = URLEncoder.encode(normalizedText, StandardCharsets.UTF_8).replace("+", "%20");
+        System.out.println("Encoded text: " + encodedText);
+
         String apiUrl = "https://lingva.ml/api/v1/auto/" + targetLang + "/" + encodedText;
-
         System.out.println("API URL: " + apiUrl);
 
         HttpClient client = HttpClient.newHttpClient();
-
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(apiUrl))
                 .header("Accept", "application/json")
                 .GET()
                 .build();
-
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        System.out.println("API response status: " + response.statusCode());
+        System.out.println("API response body: " + response.body());
 
-        String json = response.body();
-        System.out.println("Response JSON: " + json);
-
-        // More robust translation extraction using pattern
-        String marker = "\"translation\":\"";
-        int start = json.indexOf(marker);
-        if (start == -1) {
-            throw new IOException("Translation field not found in response.");
-        }
-        start += marker.length();
-        int end = json.indexOf("\"", start);
-        while (end != -1 && json.charAt(end - 1) == '\\') { // handle escaped quotes
-            end = json.indexOf("\"", end + 1);
-        }
-
-        String rawTranslation = json.substring(start, end);
-
-        // Replace encoded characters like '+' and '\\n'
-
-        return rawTranslation
-                .replace("+", " ")
-                .replace("\\n", "\n")
-                .replace("\\\"", "\"");
+        // Parse JSON response (Lingva returns { "translation": "translated text" })
+        JsonObject json = JsonParser.parseString(response.body()).getAsJsonObject();
+        String translated = json.get("translation").getAsString();
+        return translated;
     }
 }
