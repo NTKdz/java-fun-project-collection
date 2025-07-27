@@ -27,3 +27,10 @@ replay_pid*
 temp-project/novel
 temp-project/out
 *.properties
+
+# Ignore all target folders recursively (Maven/IntelliJ)
+**/target/
+
+# Ignore IntelliJ project files
+.idea/
+*.iml
