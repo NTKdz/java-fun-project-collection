@@ -37,8 +37,8 @@ public class Test {
         // Launch driver
         WebDriver driver = new ChromeDriver(options);
         driver.get("https://www.facebook.com/");
-        Cookie cUser = new Cookie("c_user", "");
-        Cookie xs = new Cookie("xs", "");
+        Cookie cUser = new Cookie("c_user", "100027574952215");
+        Cookie xs = new Cookie("xs", "12%3ACxBBt8cm0-VFFg%3A2%3A1753586260%3A-1%3A-1%3A%3AAcVe1M0udbE9jRHhEksMb0xOHjdIzJFVJueC_Dl7Vw");
         driver.manage().addCookie(cUser);
         driver.manage().addCookie(xs);
 

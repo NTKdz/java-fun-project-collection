@@ -12,6 +12,10 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 import java.io.*;
+import java.nio.ByteBuffer;
+import java.nio.channels.AsynchronousFileChannel;
+import java.nio.channels.FileChannel;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
 import java.time.Duration;
 import java.util.*;
@@ -31,9 +35,9 @@ public class OptimizedScraper {
 
     public static void main(String[] args) {
         int start = 1;
-        int end = 707;
-        String url = "https://metruyencv.biz/truyen/bat-dau-cam-xuong-nhan-vat-chinh-muoi-muoi-ban-thuong-chi-ton-cot/chuong-";
-        String folderPath = "novel/nv-chinh-muoi-muoi/";
+        int end = 738;
+        String url = "https://metruyencv.biz/truyen/than-hao-hen-ho-he-thong-ta-co-the-thu-thap-my-nu-thien-phu/chuong-";
+        String folderPath = "novel/than-hao-thu-thap/";
 
         // Login
         String loginUrl = "https://backend.metruyencv.com/api/auth/login";
@@ -211,7 +215,14 @@ public class OptimizedScraper {
                     }
 
                     Elements chapterContent = doc.select("#chapter-content");
-                    String content = chapterContent.text();
+                    chapterContent.select("div[id=middle-content-three]").remove();
+                    chapterContent.select("div[id=middle-content-two]").remove();
+                    chapterContent.select("div[id=middle-content-one]").remove();
+                    chapterContent.select("canvas").remove();
+
+                    String content = chapterContent.html()
+                            .replaceAll("(?i)<br\\s*/?>\\s*(<br\\s*/?>\\s*)+", "<br>")
+                            .replace("<br>", "\n");
 
                     if (content.isEmpty()) {
                         System.err.println("Content is empty for chapter " + chapter + ". Check authentication or page structure.");
@@ -242,44 +253,65 @@ public class OptimizedScraper {
         }
     }
 
-    private static void saveFile(String content, String fileName, String folderPath) {
-        File file = new File(folderPath + "/" + fileName);
+    public static void saveFile(String content, String fileName, String folderPath) {
+        Path file = Path.of(folderPath, fileName);
         try {
-            File folder = new File(folderPath);
-            if (!folder.exists()) {
-                folder.mkdirs();
+            Files.createDirectories(file.getParent());
+
+            try (AsynchronousFileChannel channel = AsynchronousFileChannel.open(
+                    file,
+                    StandardOpenOption.WRITE,
+                    StandardOpenOption.CREATE,
+                    StandardOpenOption.TRUNCATE_EXISTING
+            )) {
+                ByteBuffer buffer = ByteBuffer.wrap(content.getBytes(StandardCharsets.UTF_8));
+                Future<Integer> result = channel.write(buffer, 0);
+                result.get(); // wait until done
             }
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
-                writer.write(content);
-            }
-        } catch (IOException e) {
-            System.err.println("Error saving file " + fileName + ": " + e.getMessage());
+        } catch (Exception e) {
+            System.err.printf("❌ NIO error saving file %s: %s%n", fileName, e.getMessage());
         }
     }
 
-    private static void mergeFiles(String folderPath, String mergedFileName) {
+    // Merge using FileChannel (efficient bulk transfer)
+    public static void mergeFiles(String folderPath, String mergedFileName) {
+        Path mergedFile = Path.of(folderPath, mergedFileName);
         File folder = new File(folderPath);
-        File mergedFile = new File(folderPath + "/" + mergedFileName);
 
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(mergedFile))) {
+        try (FileChannel mergedChannel = FileChannel.open(
+                mergedFile,
+                StandardOpenOption.CREATE,
+                StandardOpenOption.WRITE,
+                StandardOpenOption.TRUNCATE_EXISTING
+        )) {
             File[] files = folder.listFiles((dir, name) -> name.startsWith("chapter-") && name.endsWith(".txt"));
-            if (files != null) {
-                Arrays.sort(files, Comparator.comparingInt(file -> Integer.parseInt(file.getName().replaceAll("\\D", ""))));
-                for (File file : files) {
-                    try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-                        String line;
-                        while ((line = reader.readLine()) != null) {
-                            writer.write(line);
-                            writer.newLine();
-                        }
-                    }
-                }
-                System.out.println("All chapters merged into: " + mergedFile.getAbsolutePath());
-            } else {
-                System.out.println("No chapter files found in the folder.");
+
+            if (files == null || files.length == 0) {
+                System.out.println("⚠ No chapter files found in: " + folderPath);
+                return;
             }
+
+            Arrays.sort(files, Comparator.comparingInt(
+                    f -> Integer.parseInt(f.getName().replaceAll("\\D", "")))
+            );
+
+            for (File file : files) {
+                // Write chapter header
+                String header = "**CHAPTER " + file.getName().replaceAll("\\D", "") + "\n\n";
+                mergedChannel.write(ByteBuffer.wrap(header.getBytes(StandardCharsets.UTF_8)));
+
+                // Copy file content efficiently
+                try (FileChannel chapterChannel = FileChannel.open(file.toPath(), StandardOpenOption.READ)) {
+                    chapterChannel.transferTo(0, chapterChannel.size(), mergedChannel);
+                }
+
+                mergedChannel.write(ByteBuffer.wrap("\n\n".getBytes(StandardCharsets.UTF_8)));
+            }
+
+            System.out.println("✅ All chapters merged (NIO) into: " + mergedFile.toAbsolutePath());
+
         } catch (IOException e) {
-            System.err.println("Error merging files: " + e.getMessage());
+            System.err.printf("❌ NIO error merging files: %s%n", e.getMessage());
         }
     }
 
