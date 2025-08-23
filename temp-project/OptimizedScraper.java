@@ -256,20 +256,16 @@ public class OptimizedScraper {
     public static void saveFile(String content, String fileName, String folderPath) {
         Path file = Path.of(folderPath, fileName);
         try {
-            Files.createDirectories(file.getParent());
-
-            try (AsynchronousFileChannel channel = AsynchronousFileChannel.open(
-                    file,
-                    StandardOpenOption.WRITE,
-                    StandardOpenOption.CREATE,
-                    StandardOpenOption.TRUNCATE_EXISTING
-            )) {
-                ByteBuffer buffer = ByteBuffer.wrap(content.getBytes(StandardCharsets.UTF_8));
-                Future<Integer> result = channel.write(buffer, 0);
-                result.get(); // wait until done
+            File folder = new File(folderPath);
+            if (!folder.exists()) {
+                folder.mkdirs();
             }
-        } catch (Exception e) {
-            System.err.printf("❌ NIO error saving file %s: %s%n", fileName, e.getMessage());
+            // Simple, fast, blocking write
+            try (BufferedWriter writer = Files.newBufferedWriter(file, StandardCharsets.UTF_8)) {
+                writer.write(content);
+            }
+        } catch (IOException e) {
+            System.err.println("Error saving file " + fileName + ": " + e.getMessage());
         }
     }
 
