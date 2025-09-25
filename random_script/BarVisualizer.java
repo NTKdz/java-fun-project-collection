@@ -6,8 +6,8 @@ import java.io.File;
 public class BarVisualizer extends JPanel {
     private int[] currentLevels = new int[0]; // what is shown
     private int[] targetLevels = new int[0];  // new computed RMS
-    private final float riseSpeed = 0.5f;     // how fast bars rise (0..1)
-    private final float fallSpeed = 0.1f;     // how fast bars fall (0..1)
+    private final float riseSpeed = 0.08f;     // how fast bars rise (0..1)
+    private final float fallSpeed = 0.05f;     // how fast bars fall (0..1)
 
     public enum Mode { BARS, WAVEFORM, MIRROR_WAVEFORM, CIRCLE, DOTS }
 
@@ -79,10 +79,8 @@ public class BarVisualizer extends JPanel {
             int x2 = i * w / currentLevels.length;
             int y2 = (currentLevels[i] * mid / 32768);
 
-            // upper waveform
-            g2.drawLine(x1, mid - y1, x2, mid - y2);
-            // mirrored lower waveform
-            g2.drawLine(x1, mid + y1, x2, mid + y2);
+            g2.drawLine(x1, mid - y1, x2, mid - y2); // upper
+            g2.drawLine(x1, mid + y1, x2, mid + y2); // mirrored lower
         }
     }
 
@@ -169,50 +167,57 @@ public class BarVisualizer extends JPanel {
 
         int frameSize = format.getFrameSize();
         int sampleRate = (int) format.getSampleRate();
-        int windowMs = 50; // analysis window
+        int windowMs = 50;
         int bytesPerWindow = (int) (frameSize * sampleRate * (windowMs / 1000.0));
 
         byte[] buffer = new byte[bytesPerWindow];
 
         BarVisualizer vis = new BarVisualizer(800, 300);
-        JFrame frame = new JFrame("Smooth Visualizer");
+
+        // === GUI with selector ===
+        JFrame frame = new JFrame("Visualizer Selector");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.add(vis);
+        frame.setLayout(new BorderLayout());
+        frame.add(vis, BorderLayout.CENTER);
+
+        JComboBox<Mode> selector = new JComboBox<>(Mode.values());
+        selector.addActionListener(e -> vis.setMode((Mode) selector.getSelectedItem()));
+        frame.add(selector, BorderLayout.NORTH);
+
         frame.pack();
         frame.setVisible(true);
 
         int numBars = 60;
+
+        SourceDataLine line = AudioSystem.getSourceDataLine(format);
+        line.open(format);
+        line.start();
 
         Timer audioTimer = new Timer(windowMs, e -> {
             try {
                 int bytesRead = stream.read(buffer);
                 if (bytesRead == -1) {
                     ((Timer) e.getSource()).stop();
+                    line.drain();
+                    line.close();
                     return;
                 }
+                line.write(buffer, 0, bytesRead);
 
                 int[] samples = new int[bytesRead / 2];
                 for (int i = 0, s = 0; i < bytesRead - 1; i += 2, s++) {
                     int sample = (buffer[i] & 0xFF) | (buffer[i + 1] << 8);
                     samples[s] = sample;
                 }
-
                 vis.setLevels(samples, numBars);
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
         });
 
-        Timer drawTimer = new Timer(16, e -> vis.smoothUpdate());
+        Timer drawTimer = new Timer(1000 / 144, e -> vis.smoothUpdate());
 
         audioTimer.start();
         drawTimer.start();
-
-        // Example: cycle through modes every 5s
-        new Timer(5000, e -> {
-            Mode[] modes = Mode.values();
-            vis.setMode(modes[(vis.mode.ordinal() + 1) % modes.length]);
-            System.out.println("Switched to mode: " + vis.mode);
-        }).start();
     }
 }
