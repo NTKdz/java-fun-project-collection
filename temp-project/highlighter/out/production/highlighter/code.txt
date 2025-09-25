@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Code → Color Blocks</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+        :root { --size: 10px; --gap: 2px; }
+        body { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background:#0f1220; color:#e6e6e6; margin:0; padding:24px;}
+        .controls { display:flex; gap:12px; align-items:center; margin-bottom:16px; flex-wrap:wrap;}
+        .grid { line-height: 0; font-size: 0; user-select:none; }
+        .b {
+          display:inline-block;
+          width: var(--size);
+          height: var(--size);
+          margin: calc(var(--gap) / 2);
+          border-radius: 2px;
+        }
+        .sp { display:inline-block; width: calc(var(--size)); height: var(--size); margin: calc(var(--gap) / 2); opacity: 0.18; }
+        .nl { display:block; height: calc(var(--size) + var(--gap)); }
+        /* optional: reveal mode overlays tiny glyphs on top of blocks */
+        .reveal .b::after {
+          content: attr(data-c);
+          position: relative; display:inline-block;
+          color: #000; mix-blend-mode: screen;
+          font-size: 10px; line-height: var(--size);
+          width: var(--size); height: var(--size);
+          text-align:center;
+        }
+    </style>
+</head>
+<body>
+<div class="controls">
+    <label>Block size
+        <input id="size" type="range" min="6" max="24" value="10" />
+    </label>
+    <label>Gap
+        <input id="gap" type="range" min="0" max="8" value="2" />
+    </label>
+    <label><input id="reveal" type="checkbox" /> reveal text</label>
+    <button id="copyCfg">copy settings</button>
+</div>
+
+<div id="grid" class="grid" aria-hidden="true"></div>
+
+<script>
+    /** paste your code here */
+    const code = `public static void main(String[] args) {
+        System.out.println("Hello, mosaic!");
+    }`;
+
+    const grid = document.getElementById('grid');
+    const sizeCtl = document.getElementById('size');
+    const gapCtl = document.getElementById('gap');
+    const revealCtl = document.getElementById('reveal');
+
+    function hash(str) {
+      // simple fast hash → 0..2^32-1
+      let h = 2166136261 >>> 0;
+      for (let i = 0; i < str.length; i++) {
+        h ^= str.charCodeAt(i);
+        h = Math.imul(h, 16777619);
+      }
+      return h >>> 0;
+    }
+
+    // map a character to a color (HSL) — tweak categories to taste
+    function colorFor(ch) {
+      if (ch === '\t' || ch === ' ') return 'transparent';
+      const code = ch.charCodeAt(0);
+
+      // categories: letters, digits, punctuation, braces, quotes, other
+      let category = 'other';
+      if ((code >= 65 && code <= 90) || (code >= 97 && code <= 122)) category = 'letter';
+      else if (code >= 48 && code <= 57) category = 'digit';
+      else if ('{}[]()'.includes(ch)) category = 'brace';
+      else if ('"\''.includes(ch)) category = 'quote';
+      else if (';:,.<>+-=*/%&|!^~?'.includes(ch)) category = 'op';
+      else if (ch === '#') category = 'hash';
+
+      const baseHue = ({
+        letter: 210,   // blue
+        digit: 30,     // orange
+        brace: 140,    // green
+        quote: 330,    // magenta
+        op: 260,       // purple
+        hash: 190,     // cyan
+        other: 0       // red-ish
+      })[category];
+
+      // jitter hue/lightness by hashed char to vary inside category
+      const h = (baseHue + (hash(ch) % 40) - 20 + 360) % 360;
+      const s = 60 + (hash(ch + 's') % 25);      // 60–84%
+      const l = 50 + (hash(ch + 'l') % 18) - 9;  // ~41–59%
+      return `hsl(${h} ${s}% ${l}%)`;
+    }
+
+    function render(text) {
+      const frag = document.createDocumentFragment();
+      for (let i = 0; i < text.length; i++) {
+        const ch = text[i];
+        if (ch === '\n') {
+          const br = document.createElement('span');
+          br.className = 'nl';
+          frag.appendChild(br);
+          continue;
+        }
+        if (ch === ' ' || ch === '\t') {
+          const sp = document.createElement('span');
+          sp.className = 'sp';
+          frag.appendChild(sp);
+          continue;
+        }
+        const span = document.createElement('span');
+        span.className = 'b';
+        span.style.background = colorFor(ch);
+        // keep original char only if reveal is toggled (no selectable text)
+        span.setAttribute('data-c', ch);
+        frag.appendChild(span);
+      }
+      grid.innerHTML = '';
+      grid.appendChild(frag);
+    }
+
+    function applyControls() {
+      document.documentElement.style.setProperty('--size', sizeCtl.value + 'px');
+      document.documentElement.style.setProperty('--gap', gapCtl.value + 'px');
+      grid.classList.toggle('reveal', revealCtl.checked);
+    }
+
+    sizeCtl.addEventListener('input', applyControls);
+    gapCtl.addEventListener('input', applyControls);
+    revealCtl.addEventListener('change', applyControls);
+    document.getElementById('copyCfg').addEventListener('click', () => {
+      const cfg = { size: sizeCtl.value, gap: gapCtl.value };
+      navigator.clipboard.writeText(JSON.stringify(cfg));
+    });
+
+    render(code);
+    applyControls();
+</script>
+</body>
+</html>

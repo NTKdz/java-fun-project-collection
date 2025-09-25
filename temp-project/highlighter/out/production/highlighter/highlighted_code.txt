@@ -1,0 +1,143 @@
+mint.9 grey.5
+magenta.5 brown.10
+maroon.6
+    beige.5 pink.15 grey.2
+    mint.11 maroon.1 lavender.5 grey.14
+    beige.5 red.15 purple.28 coral.16 grey.2
+    orange.7
+        red.5 yellow.1 grey.7 lime.5 red.6 green.4 orange.1
+        teal.4 yellow.1 brown.12 maroon.13 beige.15 orange.6 purple.9 olive.10 mint.19 lime.14 beige.9 beige.14
+        lime.9 yellow.1 navy.13 maroon.9 lime.19 navy.19 olive.16
+        lime.5 yellow.1 navy.12 magenta.2 pink.10 magenta.2 lavender.17 orange.1
+        purple.2 yellow.1
+          teal.21
+          purple.6 lime.12
+          grey.7 lime.12
+          lime.7 beige.15 magenta.1 red.3
+          lavender.14 green.4
+        orange.1
+        yellow.3 yellow.1 teal.21 purple.6 blue.18 grey.7 lime.12 lime.7 beige.15 magenta.1 red.3 green.8 navy.5 orange.1
+        purple.3 yellow.1 navy.14 grey.7 purple.16 yellow.1 navy.12 orange.1
+        grey.2 maroon.9 magenta.6 lavender.4 grey.8 brown.4 beige.6 lavender.2 pink.3 yellow.2 navy.6 pink.2
+        mint.7 red.9 yellow.1
+          magenta.8 yellow.13
+          coral.9 pink.9 teal.21
+          orange.6 navy.5 maroon.15 mint.7
+          pink.10 lime.5 navy.12 lime.12
+          purple.6 lime.12 grey.7 lime.12
+          pink.18
+        orange.1
+    red.8
+coral.7
+brown.6
+beige.4 coral.17
+    orange.12 beige.4
+        teal.6 beige.9 lime.12 grey.7 yellow.8 green.10 grey.2
+    grey.8
+    lime.10
+        teal.6 lime.8 lime.12 beige.7 yellow.7 blue.9 grey.2
+    grey.8
+    olive.13 grey.11 purple.15 grey.2 magenta.6 maroon.12
+    teal.7 red.17 maroon.17
+brown.6
+
+beige.4 brown.9 lavender.12 mint.25
+
+green.8
+    lavender.3 lavender.5 yellow.4 green.4 red.4 pink.2
+    lavender.5 green.4 green.1 lavender.7 navy.6 purple.4 maroon.13 red.5 yellow.1
+        brown.26 lavender.10
+    red.3
+
+    lavender.5 blue.4 green.1 beige.32
+    lavender.5 teal.7 green.1 maroon.32
+    lavender.5 yellow.6 green.1 mint.31
+    lavender.5 teal.9 green.1 cyan.34
+
+    brown.8 navy.9 yellow.1
+      purple.2 cyan.6 red.4 teal.4 maroon.1 yellow.9
+      mint.3 purple.1 green.1 brown.10 cyan.3 magenta.2
+      coral.3 mint.4 orange.1 green.1 magenta.2 orange.1 red.1 purple.11 brown.4 yellow.1
+        purple.1 mint.2 teal.18
+        purple.1 green.1 pink.12 maroon.10
+      orange.1
+      purple.6 purple.1 cyan.3 magenta.2
+    orange.1
+
+    purple.2 lime.3 coral.1 orange.9 magenta.2 coral.1 yellow.5 brown.5 brown.1 red.5 olive.10 magenta.2 mint.5
+    brown.8 blue.12 yellow.1
+      coral.2 beige.3 beige.3 olive.4 lime.2 beige.2 beige.3 grey.1 teal.2 purple.6 grey.14
+      lavender.5 green.4 green.1 grey.17
+
+      purple.2 teal.11 magenta.8 blue.7 blue.12 brown.7 beige.7 olive.5
+      mint.3 blue.8 green.1 lavender.8
+      coral.2 green.6 yellow.2 magenta.2 olive.2 green.4 green.2 cyan.3 lime.2 green.5 yellow.2 blue.2 olive.2 green.4 green.2 green.5 blue.8 green.1 orange.9
+      orange.4 coral.2 green.5 yellow.2 lime.2 olive.2 green.4 green.2 grey.3 blue.8 green.1 teal.8
+      orange.4 coral.2 green.23 blue.8 green.1 red.8
+      orange.4 coral.2 pink.20 blue.8 green.1 grey.8
+      orange.4 coral.2 lime.35 blue.8 green.1 red.5
+      orange.4 coral.2 beige.3 beige.3 maroon.4 blue.8 green.1 magenta.7
+
+      lavender.5 orange.7 green.1 yellow.2
+        olive.7 lavender.4   purple.2 maroon.4
+        grey.6 yellow.3     purple.2 teal.6
+        pink.6 yellow.4    purple.2 grey.5
+        teal.6 purple.4    purple.2 orange.7
+        green.3 olive.4       purple.2 brown.6
+        lime.5 lime.4     purple.2 magenta.4
+        blue.6 lime.1       purple.2 teal.7
+      coral.13
+
+      purple.2 lime.6 teal.13 grey.2 mint.6 maroon.4 magenta.2 teal.4 red.6 blue.8
+      lavender.5 purple.1 green.1 grey.8 yellow.1 maroon.9 coral.1 green.3 orange.1 navy.2 yellow.1 purple.4 coral.1 blue.4
+      lavender.5 mint.1 green.1 blue.2 yellow.1 mint.8 yellow.1 maroon.4 coral.1 beige.4      purple.2 lime.6
+      lavender.5 lime.1 green.1 lavender.2 yellow.1 mint.8 yellow.1 magenta.4 coral.1 cyan.3 orange.1 cyan.2  purple.2 pink.7
+      purple.6 magenta.9 olive.5 coral.8
+    orange.1
+
+    brown.8 maroon.12 yellow.1
+      lavender.5 cyan.4 green.1 red.34
+      coral.3 mint.4 orange.1 green.1 magenta.2 orange.1 red.1 olive.12 brown.4 yellow.1
+        lavender.5 beige.2 green.1 grey.8
+        coral.2 beige.3 beige.3 lavender.5 yellow.1
+          lavender.5 brown.2 green.1 yellow.31
+          orange.12 green.1 orange.5
+          brown.21
+          olive.9
+        orange.1
+        coral.2 beige.3 beige.3 grey.1 grey.1 lime.2 beige.2 beige.3 coral.5 yellow.1
+          lavender.5 coral.2 green.1 yellow.31
+          teal.12 green.1 purple.5
+          magenta.21
+          olive.9
+        orange.1
+        lavender.5 maroon.4 green.1 yellow.31
+        beige.14 green.1 mint.4
+        beige.21 green.1 orange.13
+        purple.2 green.4 beige.8 maroon.4 red.4 coral.2 magenta.6 teal.2 lime.7 green.3 cyan.10 purple.5
+        blue.27 yellow.4
+        blue.23
+      orange.1
+      beige.14 green.1 magenta.3
+      navy.23
+    orange.1
+
+    brown.8 pink.15 yellow.1
+      beige.52 orange.13 yellow.1 teal.6
+      cyan.51 olive.12 yellow.1 teal.6
+      orange.31 orange.19
+    orange.1
+
+    lavender.33 navy.15
+    navy.32 navy.15
+    beige.36 navy.15
+    teal.60 green.2 beige.2 yellow.1
+      lavender.5 purple.3 green.1 yellow.1 green.5 green.14 red.4 olive.12 maroon.2
+      grey.51
+    mint.3
+
+    coral.13
+    cyan.16
+red.9
+grey.7
+brown.7

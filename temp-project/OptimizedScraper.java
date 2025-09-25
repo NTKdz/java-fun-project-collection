@@ -35,14 +35,14 @@ public class OptimizedScraper {
 
     public static void main(String[] args) {
         int start = 1;
-        int end = 738;
-        String url = "https://metruyencv.biz/truyen/than-hao-hen-ho-he-thong-ta-co-the-thu-thap-my-nu-thien-phu/chuong-";
-        String folderPath = "novel/than-hao-thu-thap/";
+        int end = 314;
+        String url = "https://metruyencv.biz/truyen/bat-dau-bat-lay-nhan-vat-chinh-mau-than-ban-thuong-trong-dong/chuong-";
+        String folderPath = "novel/trong-dong/";
 
         // Login
         String loginUrl = "https://backend.metruyencv.com/api/auth/login";
-        String email = "-"; // Replace with your email
-        String password = "-"; // Replace with your password
+        String email = ""; // Replace with your email
+        String password = ""; // Replace with your password
         try {
             token = loginAndGetToken(loginUrl, email, password);
             System.out.println("Extracted token: " + token);
@@ -71,7 +71,12 @@ public class OptimizedScraper {
 
             for (Future<?> future : futures) {
                 try {
-                    future.get();
+                    try {
+                        future.get(1, TimeUnit.MINUTES); // limit per chapter
+                    } catch (TimeoutException e) {
+                        System.err.println("Task timed out, cancelling...");
+                        future.cancel(true);
+                    }
                 } catch (ExecutionException e) {
                     System.err.println("Error during task execution: " + e.getCause());
                 } catch (InterruptedException e) {
@@ -242,7 +247,7 @@ public class OptimizedScraper {
                         System.err.println("Skipping chapter " + chapter + " after " + maxAttempts + " failed attempts.");
                         return;
                     }
-                    Thread.sleep(1000 * (1 << attempts) + RANDOM.nextInt(100));
+                    Thread.sleep(1000L * (1L << attempts) + RANDOM.nextInt(100));
                 }
             }
         } catch (InterruptedException e) {
