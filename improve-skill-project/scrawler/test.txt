@@ -1,0 +1,556 @@
+<div class="contentbox" style="height: 0;display: none;">
+ Đọc trên web để có chất lượng dịch cao và ủng hộ website.
+</div>
+<div class="contentbox" style="font-family:arial;padding: 24px;font-size:18px;" id="maincontent" cid="7215574803431096832" user="">
+ <br>
+ <center>
+  <span class="spinner-border"></span>
+  <br>
+   Nhấp vào để tải chương...
+ </center>
+ <br>
+ <script async type="text/javascript">
+			try{
+				if(location.hash){
+				if(location.hash.match && location.hash.match(/settransmode=(name|chinese)/)){
+					settransmode(/settransmode=(name|chinese)/.exec(location.hash)[1], true);
+				}
+				if(location.hash.match && location.hash.match(/settranslang=(vi|en|.....)/)){
+					settranslang(/settranslang=(vi|en|.....)/.exec(location.hash)[1], true);
+				}
+			}}catch(ss){}
+			var noscale=q('meta[name="viewport"]')[0];
+			noscale.setAttribute("content", "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no");
+			var chapcache={};
+			var bookid="7215574730256944188";
+			var currentid="7215574803431096832";
+			var bookhost="fanqie";
+			if(bookhost=="sangtac"||bookhost=="dich"){
+				window.lockCtp = true;
+				if(window.fontfam){
+					g("maincontent").style.fontFamily = window.fontfam;
+				}else{
+					g("maincontent").style.fontFamily = 'nunito';
+				}
+
+			}
+			if(["faloo","dich","sangtac"].indexOf(bookhost)>=0){
+				addEventListener('DOMContentLoaded', (event) => {
+					q("#configBox button")[0].style.display= "none";
+				});
+			}
+			if(bookhost=="faloo"){
+				window.lockCtp = true;
+				if(window.fontfam){
+					g("maincontent").style.fontFamily = window.fontfam;
+				}else{
+					g("maincontent").style.fontFamily = 'stvarial';
+				}
+			}
+			var booksty=1;
+			var currentidc='';
+			var chapterfetcher = new XMLHttpRequest();
+			var tmpctn = document.createElement("div");
+			var timerout = setTimeout(function(){
+				if(chapterfetcher.readyState==1){return;}
+				if(bookhost!="qidian"){
+					g("maincontent").innerHTML="<center>Tải quá thời gian, vui lòng tải lại trang.</center>";
+					setTimeout(function(){
+						location.reload();
+					},1500);
+				}
+			}, 20000);
+			if(!window.setting){
+				window.setting={};
+			}
+			var extparam="";
+			try{
+				window.localStorage.getItem;
+			}catch(e){
+				ui.notif("Trang web không có quyền lưu trữ dữ liệu vào trình duyệt, có khả năng sẽ không hoạt động. (Nguyên nhân: Duyệt ẩn danh, chặn lưu trữ, ...)");
+			}
+			if(bookhost=="sangtac"||bookhost=="dich"){
+				extparam += g("maincontent").clientWidth;
+				if(window.rgbToInt){
+					var fffontc = localStorage.getItem("fontcolor");
+					var ffbgc = localStorage.getItem("backgroundcolor");
+					if(fffontc)
+						extparam +="^" + window.rgbToInt(fffontc);
+					else{
+						extparam +="^" + "-16777216";
+					}
+					if(ffbgc)
+						extparam +="^" + window.rgbToInt(ffbgc);
+					else{
+						extparam +="^" + "-1383213";
+					}
+				}
+			}
+			document.oncopy=function(){
+				var txt=window.getSelection().toString();
+				if(txt.length>1e3){
+					ui.copy("Truyện được đăng tại "+location.href+"\n"+rdmzr(txt));
+					ajax("ajax=leaking&b="+bookid+"&c="+currentid);
+				}
+			}
+			if(window.isComic){
+				ui.scriptmanager.load("https://comic.sangtacvietcdn.xyz/data/js/comic.js?r=40",function(){
+					comicRenderer.init(contentcontainer);
+					comicRenderer.load(bookhost,bookid,currentid);
+					updatenewlinkcomic(bookhost,bookid,currentid);
+				});
+				clearTimeout(timerout);
+			}else{
+				chapterfetcher.open('POST', '/index.php?bookid='+bookid+'&h='+bookhost+'&c='+currentid+'&ngmar=readc&sajax=readchapter&sty='+booksty+"&exts="+extparam, true);
+				chapterfetcher.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+			}
+
+			chapterfetcher.onreadystatechange = function() {
+				if(chapterfetcher.readyState == 4 && chapterfetcher.status == 200) {
+					clearTimeout(timerout);
+					var x = {};
+					try{
+						x=JSON.parse(chapterfetcher.responseText);
+					}catch(e){
+						try{
+							x=JSON.parse(chapterfetcher.responseText.substring(chapterfetcher.responseText.indexOf("{\"")));
+						}catch(e){
+							console.log(chapterfetcher.responseText);
+							return
+						}
+					}
+					try{
+						if(x.code=="0"){
+							g("breadcum").textContent = x.bookname + " / " + x.chaptername;
+							g("booknameholder").textContent=x.bookname;
+							g("bookchapnameholder").textContent=x.chaptername;
+							if(bookhost=="trxs" || bookhost=="bxwxorg" || bookhost=="faloo" || bookhost=="biquge" || bookhost=="fanqie"){
+								x.next=0;
+								x.prev=0;
+							}
+							if(x.next<x.prev && bookhost!="qidian"){
+								var tmpprev = x.prev;
+								x.prev=x.next;x.next=tmpprev;
+							}
+							var setnav = function(x, aRetry){
+								try{
+									g("navprevtop").setAttribute("href",`/truyen/${x.bookhost}/1/${x.bookid}/${x.prev}/`);
+									g("navnexttop").setAttribute("href",`/truyen/${x.bookhost}/1/${x.bookid}/${x.next}/`);
+									g("navprevbot").setAttribute("href",`/truyen/${x.bookhost}/1/${x.bookid}/${x.prev}/`);
+									g("navnextbot").setAttribute("href",`/truyen/${x.bookhost}/1/${x.bookid}/${x.next}/`);
+									g("navcentertop").setAttribute("href",`/truyen/${x.bookhost}/1/${x.bookid}/`);
+									g("navcenterbot").setAttribute("href",`/truyen/${x.bookhost}/1/${x.bookid}/`);
+									g("originbutton").setAttribute("onclick", "location.href='"+x.origin+"'");
+									if(x.origin.length < 5){
+										g("originbutton").style.display="none";
+									}
+								}catch(e){
+									if(aRetry){
+										setTimeout(function(){
+											setnav(x, false);
+										}, 1000);
+									}else{
+										ajax("sajax=reportscripterror&data=SET NAV: "+e.stack+"&file="+encodeURIComponent(location.href)+"&line=0:0",function() {});
+									}
+								}
+							}
+							setnav(x, true);
+							if(x.next==0||x.next=="0"||x.prev==0||x.prev=="0"){
+								updatenewlink(x.bookhost,x.bookid,currentid);
+								//setTimeout(function(){
+
+								//},1500);
+							}
+							document.title=x.chaptername+" - " +x.bookname +" - Sáng Tác Việt - sangtacviet.com";
+							window.bookOwner = x.owner;
+							//g("maincontent").innerHTML=x.data;
+							//loadnodedata();
+							//g("maincontent").innerHTML= preprocess(x.data);
+							//g("maincontent").offsetHeight;
+							try{
+								if(window.updateTusach){
+									updateTusach();
+								}else{
+									setTimeout(function(){
+										updateTusach();
+									}, 1000);
+								}
+							}catch(e1){
+								console.log(e1);
+							}
+							if(!window.contentcontainer){
+								window.contentcontainer = "maincontent";
+							} else if (g(contentcontainer) == null) {
+								window.contentcontainer = "maincontent";
+							}
+							if(chapterfetcher.getResponseHeader("X-ReqId")){
+								setContentAiTranslate(chapterfetcher.getResponseHeader("X-ReqId"));
+							} else if(x.isComic){
+								loadComic(x.target);
+							} else if(window.moveitoupper){
+								tmpctn.innerHTML= preprocess(x.data);
+								moveitoupper(tmpctn.innerHTML);
+							} else {
+								g("maincontent").innerHTML = preprocess(x.data);
+							}
+
+							var nid = "cld-"+bookid +"-"+currentid;
+							g(contentcontainer).id = nid;
+							contentcontainer = nid;
+							if(window.ttsUI && !chapterfetcher.getResponseHeader("X-ReqId")){
+								setTimeout(function(){
+									ttsUI.onContentLoaded();
+								}, 200);
+							}
+							if(window.handleDefaultName){
+								handleDefaultName(x.defaultname);
+							}
+							if(false){
+								setTimeout(function(){
+									applyNodeList();excute();
+
+								}, 100);
+							}else{
+								if(window.applyNodeList){
+									if(!window.hanvietdic){
+										ui.scriptmanager.load("/hanviet.js", function(){
+											applyNodeList();
+											window.handleDefaultName && handleDefaultName(x.defaultname);
+											excute();
+										});
+									}else{
+										applyNodeList();window.handleDefaultName && handleDefaultName(x.defaultname);excute();
+									}
+								}else{
+									ui.scriptmanager.load("/qtOnline.js", function(){
+										applyNodeList();window.handleDefaultName && handleDefaultName(x.defaultname);excute();
+									});
+								}
+							}
+
+
+							window.newchapid=x.next;
+							//setTimeout(excute, 300);
+							//setTimeout(excute, 2000);
+							if(window.tse)tse.autoexcute=true;
+
+							if(window.setting&&window.setting.overread){
+								window.onscroll=overread;
+							}else{
+								if(window.setting&&window.setting.prefetch)
+								setTimeout(function(){
+									var lastscrolle = false;
+									window.onscroll=function(){
+										if(lastscrolle)return;
+										if(document.body.scrollTop > document.body.scrollHeight/2){
+											loadNextChapter(x.bookhost,x.bookid,x.next,null);
+										}
+										lastscrolle = true;
+										setTimeout(function(){
+											lastscrolle = false;
+										},500);
+									}
+								}, 5000);
+							}
+							if(["qidian","zongheng","faloo","biquge","jjwxc", "69shu", "sfacg"].indexOf(x.bookhost)>=0){
+								if(
+									chapterfetcher.getResponseHeader("X-No-Reload") != "1" &&
+									!chapterfetcher.getResponseHeader("X-ReqId")
+								){
+									setTimeout(function(){
+										if(q("#"+contentcontainer+" i").length < 150){
+											if(g(contentcontainer).textContent.length < 150){
+												var btn=document.createElement("button");
+												btn.setAttribute("class", "btn btn-secondary w-100");
+												btn.innerHTML="Nội dung không đầy đủ?, nhấp để hệ thống tải lại.";
+												btn.onclick=function(){
+													gotox();
+												}
+												g(contentcontainer).appendChild(btn);
+											}
+										}
+									}, 1000);
+								}
+							}
+							if(x.bookhost=="faloo"){
+								setTimeout(function(){
+									var c = g(contentcontainer);
+									if(!c.style.fontFamily){
+										c.style.fontFamily = "stvarial";
+									}else
+									if(c.style.fontFamily.match(/arial|tahoma|verdana/i)){
+										var cf = c.style.fontFamily.match(/(arial|tahoma|verdana)/i)
+										c.style.fontFamily = "stv"+cf[0];
+									}
+								},3000);
+							}else{
+								if(window.speaker){
+									if(speaker.autocontinue){
+										speaker.readBook();
+									}
+								}else{
+									ui.scriptmanager.load("/qtOnline.js", function(){
+										if(window.speaker){
+											if(speaker.autocontinue){
+												speaker.readBook();
+											}
+										}
+									});
+								}
+							}
+							q("br+br+br+br").forEach(function(e){
+								if(e.previousSibling
+								&& e.previousSibling.tagName=="BR"
+								&& e.previousSibling.previousSibling
+								&& e.previousSibling.previousSibling.tagName=="BR"){
+									e.pE && e.pE().remove();
+									e.remove();
+								}
+							});
+
+						}else{
+							handlingReadException(x);
+						}
+					}catch(exc){
+						var msg = exc.toString() + "\n" + exc.stack;
+						var url = location.href;
+						ajax("sajax=reportscripterror&data=READ: "+encodeURIComponent(msg)+"&file="+encodeURIComponent(url)+"&line="+0+":"+0,function() {});
+					}
+				}else if(chapterfetcher.readyState == 4 && chapterfetcher.status >= 500){
+					setTimeout(function(){
+						location.reload();
+					}, 2000);
+				}
+			}
+			chapterfetcher.setRequestHeader('X-Requested-With', 'XmlHttpRequest');
+
+			function updatenewlink(h,id,c,calb){
+				ajaxUrl("/io/novel/updateOldLink","host="+h+"&bookid="+id+"&chapterid="+c,function(res){
+					res=res.split("-");
+					if(res[1]!="0" && res[1]){
+						g("navnexttop").setAttribute("href",`/truyen/${h}/1/${id}/${res[1]}/`);
+						g("navnextbot").setAttribute("href",`/truyen/${h}/1/${id}/${res[1]}/`);
+						if(window.setting&&window.setting.allowunitymode){
+							window.newchapid=res[1];
+						}
+					}
+					if(res[0]!="0" && res[0]){
+						g("navprevtop").setAttribute("href",`/truyen/${h}/1/${id}/${res[0]}/`);
+						g("navprevbot").setAttribute("href",`/truyen/${h}/1/${id}/${res[0]}/`);
+					}
+					window.newlinkupdated=true;
+					if(calb!=null){
+						calb();
+					}
+				});
+
+			}
+			function handleDefaultName(name){
+				if(name){
+					window.bookHaveDefaultName = true;
+					window.bookDefaultName = name;
+				}
+			}
+			function handlingReadException(x){
+				if(x.code + 1 - 1 == x.code){
+					x.code = x.code.toString();
+				}
+				if(x.code == "12"){
+					alert((x.err||x.info)+"\n"+location.href);
+					setTimeout(window.openloginmodal, 200);
+					if(!window.openloginmodal){
+						ajax("sajax=reportscripterror&data=NO LOGIN SESSION&file="+encodeURIComponent(location.href)+"&line=0:0",function() {});
+					}
+				}else
+				if(x.code == "13"){
+					setTimeout(window.openloginmodal, 200);
+				}else
+				if(x.code == "15"){
+					location = x.url;
+				}else
+				if(x.code == "18"){
+					window.open(x.url);
+				}else
+				if(x.code == "19"){
+					alert((x.err||x.info)+"\n"+location.href);
+					window.open(x.url);
+				}else
+				if(x.code=="7"){
+					try{
+						window.localStorage.getItem;
+						document.cookie = "cookieenabled=true";
+						if(document.cookie.indexOf("cookieenabled=true") < 0){
+							throw "";
+						}
+					}catch(e){
+						ui.notif("Trang web không có quyền lưu trữ dữ liệu vào trình duyệt, có khả năng sẽ không hoạt động. (Nguyên nhân: Duyệt ẩn danh, chặn lưu trữ, ...)");
+						if (location.protocol !== 'https:' && !/\d\./.test(location.href)) {
+						    location.replace(`https:${location.href.substring(location.protocol.length)}`);
+						}
+						return;
+					}
+					if(x.time){
+						setTimeout(function(){location.reload()}, x.time);
+					}else
+					location.reload();
+				}else
+				if(x.code=="21"){
+					//openCaptcha();
+					ui.captcha.open("read", "cloudflare");
+				}else
+				if(x.code=="101"){
+					loadComic(x.url);
+				}else
+				if(x.code=="5"){alert(x.info || x.err);}
+				else{
+					if(g("originbutton")){g("originbutton").setAttribute("onclick", "location.href='"+(x.origin||"#")+"'");}
+					alert((x.err||x.info)+"\n"+location.href);
+					if((x.err||x.info)+"" == "undefined" || x.code!='1'){
+						ajax("sajax=reportscripterror&data="+encodeURIComponent(JSON.stringify(x)),function() {});
+					}
+					g(contentcontainer).innerHTML=(x.err||x.info);
+				}
+			}
+			function updatenewlinkcomic(h,id,c,calb){
+				//return;
+				ajax("sajax=updatenewlinkcomic&host="+h+"&bookid="+id+"&chap="+c,function(res){
+					res=res.split("-");
+					if(res[1]!="0"){
+						g("navnexttop").setAttribute("href",`/truyen/${h}/1/${id}/${res[1]}/`);
+						g("navnextbot").setAttribute("href",`/truyen/${h}/1/${id}/${res[1]}/`);
+						if(window.setting&&window.setting.allowunitymode){
+							window.newchapid=res[1];
+						}
+					}
+					if(res[0]!="0"){
+						g("navprevtop").setAttribute("href",`/truyen/${h}/1/${id}/${res[0]}/`);
+						g("navprevbot").setAttribute("href",`/truyen/${h}/1/${id}/${res[0]}/`);
+					}
+					window.newlinkupdated=true;
+					g("bookchapnameholder").textContent="["+res[3]+"]"+res[2];
+					g("booknameholder").textContent=res[4];
+					updateTusach();
+					document.title = `${res[4]} Chap ${res[3]}: ${res[2]} - Đọc truyện tranh dịch tự động tại sangtacviet.com`;
+					if(calb!=null){
+						calb();
+					}
+				});
+
+			}
+			function gotox() {
+				chapterfetcher.open('POST', '/index.php?bookid='+bookid+'&h='+bookhost+'&c='+currentid+'&ngmar=readc&sajax=readchapter&sty='+booksty
+					, true);
+				chapterfetcher.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+				g(contentcontainer).innerHTML = '<br><center><span class="spinner-border"></span><br>Đang tải nội dung chương...</center><br>';
+				chapterfetcher.send("rescan=true&k=");
+			}
+			var loadednext=false;
+			function loadNextChapter(host,id,chap){
+				if(loadednext||chap==0||chap=="0"){
+					return;
+				}
+				loadednext=true;
+				ajax("sajax=readchapter&prefetch=true&bookid="+id+'&h='+host+'&c='+chap+'&sty=1',function(){});
+			}
+			function decodeNumMask(e){var t="",n=e.split("-");for(var r=0;r<n.length;r++)t+=String.fromCharCode(n[r]);return t}
+			function preprocess(str){
+				//try{
+				//	str=str.replace(/<i h='(.*?)'t='(.*?)'>(.*?)<\/i>/g,function(match,g1,g2,g3){
+						//return "<i h='"+g1+"'t='"+g2+"'v='"+g3+"'>"+g3.split("/")[0]+"</i>";
+					//});
+				//}catch(xxx){}
+				if(!str){
+					return "";
+				}
+				if(str.indexOf("chat-") >= 0){
+					return str;
+				}
+				var isFrn = getCookie("foreignlang") != "vi";
+				if(bookhost=="sangtac"||(bookhost=="dich" && !isFrn )){
+					str=str.replace(/<[^i\/]/g,"&gt;").replace(/[\n]+/g,"<br><br>");
+					//str=str.replace(/\[img src=/g,"<img src=");
+					str=str.replace(/ ([,\.!\?:”]+)/g,"$1");
+					if(bookhost == "sangtac"){
+						str = str.replace(/\[\[([^[\]]*)\]\]/g, function(match, encoded) {
+						    var decoded = decodeNumMask(encoded);
+						    return '<img src="' + decoded + '">';
+						});
+						return str;
+					}
+				}
+				if(["faloo", "dich", "sangtac"].indexOf(bookhost) > -1){
+					var css = document.createElement("style");
+					css.innerHTML = ".contentbox{word-break: keep-all !important;}";
+					document.body.appendChild(css);
+				}
+				str=str.replace(/<\/p>\r\n<p>/g,"<br><br>");
+				if(location.href.indexOf("ciweimao")>0){
+					str=str.replace(/<span>.*?<\/span>/g,"");
+					str=str.replace(/<img src="(.*?)".*?>/g,"<img referrerpolicy=\"no-referrer\" src=\"$1\">");
+				}
+				if(getCookie("foreignlang") && isFrn){
+					str=str.replace(/<br>/g,"<br><br>");
+					str=str.replace(/\n+/g,"<br><br>");
+					str=str.replace(/<br><br>(<br>)+/g,"<br><br>");
+					if(/<br>[^\<]{500,}/.test(str)){
+						str=str.replace(/<br>[^\<]{500,}/g,function(m){
+							return m.replace(/([\.!]+)/g, "$1<br><br>");
+						});
+					}
+					return str;
+				}
+				if(getCookie("transmode") && getCookie("transmode") == "tfms"){
+					str=str.replace(/<br>/g,"<br><br>");
+					str=str.replace(/\n+/g,"<br><br>");
+					str=str.replace(/<br><br>(<br>)+/g,"<br><br>");
+					return str;
+				}
+				if(getCookie("transmode") && getCookie("transmode") == "tfms2"){
+					str=str.replace(/\n/g,"<br>");
+					return str;
+				}
+				if(bookhost=="fanqie"){
+					str = str.replace(/<\/?article>/g,"");
+					str = str.replace(/_i_/g,"~");
+				}
+
+				str=str.replace(/đạo ?<\/i>:/g,"nói</i>:");
+				str=str.replace(/&nbsp;&nbsp;&nbsp;&nbsp;/g,"<br>");
+				str=str.replace(/\n/g,"<br>");
+				str=str.replace(/(\w) \./g,"$1.");
+				str=str.replace(/((\w\.{1}[ \t])|(\w[!?]+(”|】)?))/g,"$1<br><br>");
+				str=str.replace(/<br( ?\/)?>/ig,"<br><br>");
+				str=str.replace(/(<br>(|\n|\t|\r| )*)+/g,"<br><br>");
+				str=str.replace(/([\w>])“/g,"$1 “");
+				str=str.replace(/(\w)<\/i><br>“/g,"$1</i>.<br>");
+				str=str.replace(/ ”/g,"”");
+				if(location.href.indexOf("uukanshu")>0){
+					str=str.replace(/<div class="ad_content">.*?<\/div>/g,"");
+				}
+				if(location.href.indexOf("aikanshu")>0){
+					str=str.replace(/<img.*?src="\/novel\/images.*?>/g,"");
+				}
+
+				str=str.replace(/<a href=.*?<\/a>/g,"");
+				str=str.replace(/<br><br>([\)” 】!?]+)(<br>|$)/g,"$1$2");
+				str=str.replace(/ ([,’]) /g,"$1 ");
+				str=str.replace(/ ‘ /g," ‘");
+				str=str.replace("<a&nbsp;href=\"http:", "");
+				if(bookhost=="faloo"){
+					str=str.replace(/<br>/g,"<br>\n");
+					str=str.replace(/<br>\n([^“][^\n“]*?)”<br>/g,"<br>“$1”<br>");
+					str=str.replace(/<br>\n/g,"<br>");
+				}
+				str=str.replace(/<\/p><br><br><p>/g,"<br><br>");
+				str=str.replace(/ ([,\.!\?”]+)/g,"$1");
+				if(bookhost == 'fanqie'){
+					str = str.replace(/src=".*?"/g,function(m){return m.replace(/<br>/g,"");});
+				}
+				return str.replace("\ufffe","");
+			}
+			try {
+				analyzer.tocollect=["其他"];
+				//analyzer.lookforcollect();
+			} catch(e) {}
+		</script>
+</div>

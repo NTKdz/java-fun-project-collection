@@ -1,0 +1,30 @@
+{
+  "name": "Khoi Nguyen",
+  "age": 28,
+  "isDeveloper": true,
+  "skills": ["Java", "Python", "JavaScript"],
+  "projects": [
+    {
+      "name": "Stock Predictor",
+      "language": "Python",
+      "completed": true,
+      "contributors": 3
+    },
+    {
+      "name": "Android TV Box Controller",
+      "language": "Java",
+      "completed": false,
+      "contributors": 2
+    }
+  ],
+  "address": {
+    "street": "123 Main St",
+    "city": "Hanoi",
+    "zip": "100000",
+    "coordinates": {
+      "lat": 21.0285,
+      "lng": 105.8542
+    }
+  },
+  "notes": null
+}

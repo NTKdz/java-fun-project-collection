@@ -23,10 +23,11 @@
 hs_err_pid*
 replay_pid*
 
-
+improve-skill-project/scrawler/novel
 temp-project/novel
 temp-project/out
 *.properties
+improve-skill-project/group-project-gpt-recommend-1/dist
 
 # Ignore all target folders recursively (Maven/IntelliJ)
 **/target/

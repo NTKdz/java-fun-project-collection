@@ -1,0 +1,43 @@
+writer.flush();
+java-project\java-fun-project
+History size: 2
+New clipboard item: java-project\java-fun
+lipboard item: History
+New clipboard item: New clipboard item: java-project\java-fun
+C:\study\Coding-Project\stock-predict\main.py:118: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  df = yf.download(ticker, start=start_date, end=end_date, progress=False)
+Adding technical indicators...
+Traceback (most recent call last):
+  File "C:\study\Coding-Project\stock-predict\main.py", line 149, in <module>
+    full_df = prepare_data(TICKER, TRAIN_START_DATE, TEST_END_DATE)
+  File "C:\study\Coding-Project\stock-predict\main.py", line 122, in prepare_data
+    df = add_all_ta_features(df, open="Open", high="High", low="Low", close="Close", volume="Volume", fillna=True)
+  File "C:\study\Coding-Project\stock-predict\venv\Lib\site-packages\ta\wrapper.py", line 570, in add_all_ta_features
+    df = add_volume_ta(
+        df=df,
+    ...<6 lines>...
+        vectorized=vectorized,
+    )
+  File "C:\study\Coding-Project\stock-predict\venv\Lib\site-packages\ta\wrapper.py", line 93, in add_volume_ta
+    ).acc_dist_index()
+      ~~~~~~~~~~~~~~^^
+  File "C:\study\Coding-Project\stock-predict\venv\Lib\site-packages\ta\volume.py", line 62, in acc_dist_index
+    return pd.Series(adi, name="adi")
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\study\Coding-Project\stock-predict\venv\Lib\site-packages\pandas\core\series.py", line 584, in __init__
+    data = sanitize_array(data, index, dtype, copy)
+  File "C:\study\Coding-Project\stock-predict\venv\Lib\site-packages\pandas\core\construction.py", line 630, in sanitize_array
+    return sanitize_array(
+        data,
+    ...<3 lines>...
+        allow_2d=allow_2d,
+    )
+  File "C:\study\Coding-Project\stock-predict\venv\Lib\site-packages\pandas\core\construction.py", line 656, in sanitize_array
+    subarr = _sanitize_ndim(subarr, data, dtype, index, allow_2d=allow_2d)
+  File "C:\study\Coding-Project\stock-predict\venv\Lib\site-packages\pandas\core\construction.py", line 715, in _sanitize_ndim
+    raise ValueError(
+        f"Data must be 1-dimensional, got ndarray of shape {data.shape} instead"
+    )
+ValueError: Data must be 1-dimensional, got ndarray of shape (1945, 1) instead
+{"timestamp":"2025-09-27T21:25:43.207014100", "text":""{\"timestamp\":\"" + timestamp + "\", \"text\":\"" + text + "\"}""}
+{"timestamp":"2025-09-27T21:25:44.719515", "text":"    String timestamp = java.time.LocalDateTime.now().toString();"}

@@ -2,6 +2,8 @@ import com.sun.net.httpserver.HttpServer;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpExchange;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.GeckoDriverService;
@@ -48,13 +50,13 @@ public class Scraper {
         try {
             // Set up GeckoDriver path and Firefox options
             System.setProperty("webdriver.gecko.driver", "/data/data/com.termux/files/usr/bin/geckodriver");
-            FirefoxOptions options = new FirefoxOptions();
+            ChromeOptions options = new ChromeOptions();
             options.addArguments("--headless"); // Run in headless mode
             options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");
 
             // Initialize WebDriver
-            driver = new FirefoxDriver(options);
+            driver = new ChromeDriver(options);
 
             // Navigate to IMDb calendar
             driver.get("https://www.imdb.com/calendar/");

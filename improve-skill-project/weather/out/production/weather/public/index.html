@@ -1,0 +1,20 @@
+<html lang="">
+<head>
+    <title>fdf</title>
+</head>
+<body>
+hello world
+<script>
+    fetch("http://localhost:8080/api/data", {
+    method: "GET"
+})
+.then(response => response.json())
+.then(data => {
+    console.log(data);
+})
+.catch(error => {
+    console.error(error);
+});
+</script>
+</body>
+</html>

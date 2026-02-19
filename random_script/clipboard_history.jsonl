@@ -1,0 +1,12 @@
+{"timestamp":"2025-09-27T21:26:06.775039", "text":"    String timestamp = java.time.LocalDateTime.now().toString();"}
+{"timestamp":"2025-09-27T21:26:08.289046400", "text":"private static List<String> history = new ArrayList<>();
+    private static String lastContent = "";
+    private static final Path historyFile = Paths.get("clipboard_history.jsonl");
+    public static void main(String[] args) throws Exception {"}
+{"timestamp":"2025-09-27T21:26:24.399291800", "text":"String safeText = text.replace("\"", "\\\"");
+String content = String.format("{\"timestamp\":\"%s\", \"text\":\"%s\"}", timestamp, safeText);"}
+{"timestamp":"2025-09-27T21:27:04.407171800", "text":"String.format(\"{\\"timestamp\\":\\"%s\\", \\"text\\":\\"%s\\"}\", timestamp, safeText)"}
+{"timestamp":"2025-09-27T21:27:08.935878", "text":"lang.ClassNotFoundException: com/intellij/openapi/editor/impl/EditorCopyPasteHelperImpl$CopyPasteOptionsTransferableData\"while constructing DataFlavor for: application/x-java-serialized-object; class=com.intellij.openapi.editor.impl.EditorCopyPasteHelperImpl$CopyPasteOptionsTransferableData
+Exception \"java.lang.ClassNotFoundException: com/intellij/openapi/editor/impl/EditorCopyPasteHelperImpl$CopyPasteOptionsTransferableData\"while constructing DataFlavor for: application/x-java-serialized-object; class=com.intellij.openapi.editor.impl.EditorCopyPasteHelperImpl$CopyPasteOptionsTransferableData
+New clipboard item: String.format(\"{\\"timestamp\\":\\"%s\\", \\"text\\":\\"%s\\"}\", timestamp, safeText)
+History size: 1"}

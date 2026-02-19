@@ -35,9 +35,9 @@ public class OptimizedScraper {
 
     public static void main(String[] args) {
         int start = 1;
-        int end = 314;
-        String url = "https://metruyencv.biz/truyen/bat-dau-bat-lay-nhan-vat-chinh-mau-than-ban-thuong-trong-dong/chuong-";
-        String folderPath = "novel/trong-dong/";
+        int end = 2031;
+        String url = "https://metruyencv.biz/truyen/ban-ton-cau-den-vo-dich-vo-han-phan-than-che-ba-tien-gioi/chuong-";
+        String folderPath = "novel/ban-ton-cau-den-vo-dich-vo-han-phan-than-che-ba-tien-gioi";
 
         // Login
         String loginUrl = "https://backend.metruyencv.com/api/auth/login";
@@ -108,7 +108,7 @@ public class OptimizedScraper {
     }
 
     private static void initializeDriverPool() {
-        WebDriverManager.chromedriver().browserVersion("138").setup();
+        WebDriverManager.chromedriver().setup();
         for (int i = 0; i < MAX_CONCURRENT_BROWSERS; i++) {
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--headless=new", "--disable-gpu", "--no-sandbox", "--disable-dev-shm-usage");

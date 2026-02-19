@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.example</groupId>
+    <artifactId>search-App</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+
+    <name>File Search Engine</name>
+    <description>Lucene + Tika File Search with Vietnamese support</description>
+
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <!-- Lucene core engine -->
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-core</artifactId>
+            <version>9.10.0</version>
+        </dependency>
+
+        <!-- StandardAnalyzer, PerFieldAnalyzerWrapper, and 30+ language analyzers -->
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-analysis-common</artifactId>
+            <version>9.10.0</version>
+        </dependency>
+
+        <!--
+            ICU-based analysis — provides ICUNormalizer2Filter which is the key fix
+            for Vietnamese NFC/NFD normalization mismatches between Windows and macOS.
+            Also provides ICUFoldingFilter, ICUTokenizer, and ICUTransformFilter
+            for future use with other scripts (Thai, Arabic, CJK, etc.).
+        -->
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-analysis-icu</artifactId>
+            <version>9.10.0</version>
+        </dependency>
+
+        <!-- QueryParser, MultiFieldQueryParser -->
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-queryparser</artifactId>
+            <version>9.10.0</version>
+        </dependency>
+
+        <!-- FlatLaf dark UI theme -->
+        <dependency>
+            <groupId>com.formdev</groupId>
+            <artifactId>flatlaf</artifactId>
+            <version>3.4</version>
+        </dependency>
+
+        <!-- Tika core (MIME detection, Parser interface) -->
+        <dependency>
+            <groupId>org.apache.tika</groupId>
+            <artifactId>tika-core</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+
+        <!--
+            Tika standard parsers package — PDF, Office, EPUB, email, etc.
+            IMPORTANT: This uses META-INF/services/ SPI registration.
+            Without ServicesResourceTransformer in the shade plugin below,
+            only one parser survives the fat-JAR merge and Tika silently
+            falls back to treating everything as plain text.
+        -->
+        <dependency>
+            <groupId>org.apache.tika</groupId>
+            <artifactId>tika-parsers-standard-package</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <source>17</source>
+                    <target>17</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+
+            <!--
+                Fat JAR — bundles all dependencies into one runnable JAR.
+
+                CRITICAL FIXES for Tika in a shaded JAR:
+
+                1. ServicesResourceTransformer
+                   Tika discovers its parsers (PDF, Word, etc.) through Java SPI:
+                   META-INF/services/org.apache.tika.parser.Parser
+                   When shading without this transformer, only the LAST jar's service
+                   file survives — every other parser is silently lost.
+                   With this transformer, all service files are MERGED correctly.
+
+                2. AppendingTransformer for bus-extensions.txt
+                   Some Tika dependencies (Apache CXF, POI) use this file for
+                   their own extension registration. Appending instead of overwriting
+                   prevents silent failures when parsing Office documents.
+
+                3. Signature exclusions (*.SF, *.DSA, *.RSA, *.EC)
+                   Already present — required to prevent SecurityException at startup
+                   when signed JARs are merged into an unsigned fat JAR.
+            -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.5.0</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <createDependencyReducedPom>false</createDependencyReducedPom>
+
+                            <filters>
+                                <filter>
+                                    <artifact>*:*</artifact>
+                                    <excludes>
+                                        <!-- Strip JAR signatures — required for fat JAR to start -->
+                                        <exclude>META-INF/*.SF</exclude>
+                                        <exclude>META-INF/*.DSA</exclude>
+                                        <exclude>META-INF/*.RSA</exclude>
+                                        <exclude>META-INF/*.EC</exclude>
+                                        <!-- Strip module-info to avoid split-package errors -->
+                                        <exclude>module-info.class</exclude>
+                                        <exclude>META-INF/versions/*/module-info.class</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
+
+                            <transformers>
+                                <!-- Set the main class -->
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>com.example.SearchApp</mainClass>
+                                </transformer>
+
+                                <!--
+                                    FIX: Merge all META-INF/services/* files from every JAR.
+                                    Without this, Tika only sees ONE parser (whichever JAR
+                                    was processed last), silently losing PDF, Office, etc.
+                                    This is the single most important fix for Tika in a fat JAR.
+                                -->
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+
+                                <!--
+                                    FIX: Append (not overwrite) Apache CXF / POI bus-extensions.
+                                    Required for correct Office document parsing (XLSX, DOCX, etc.).
+                                -->
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                                    <resource>META-INF/cxf/bus-extensions.txt</resource>
+                                </transformer>
+
+                                <!--
+                                    Merge Tika's own MIME-type registry files so all
+                                    1,400+ types are available, not just the last one merged.
+                                -->
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                                    <resource>META-INF/tika-mimetypes.xml</resource>
+                                </transformer>
+
+                                <!--
+                                    Merge Spring / other frameworks' handler mappings
+                                    if any transitive dependency uses them.
+                                -->
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                                    <resource>META-INF/spring.handlers</resource>
+                                </transformer>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                                    <resource>META-INF/spring.schemas</resource>
+                                </transformer>
+                            </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+
+</project>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="improve.project.chess.controller.DashboardController">
+    <!-- Side menu -->
+    <left>
+        <VBox fx:id="sideMenu" spacing="5" style="-fx-background-color: #2C3E50; -fx-padding: 10;">
+            <Button text="Home" />
+            <Button text="Reports" fx:id="reportsButton" />
+            <VBox fx:id="reportsSubMenu" spacing="3" visible="false" managed="false">
+                <Button text="Daily" />
+                <Button text="Monthly" />
+            </VBox>
+        </VBox>
+    </left>
+
+    <!-- Main content area -->
+    <center>
+        <StackPane style="-fx-background-color: #ECF0F1;" />
+    </center>
+</BorderPane>
